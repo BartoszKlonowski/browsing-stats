@@ -7,8 +7,10 @@
     "test": "jest",
     "package-verify": "eslint . && npm run deploy && web-ext --source-dir ./build lint",
     "ci": "npm run test && npm run package-verify",
-    "build": "babel --config-file ./.babelrc ./app --extensions \".ts,.tsx\" -Dd ./build && webpack --mode development",
-    "deploy": "babel --config-file ./.babelrc ./app --extensions \".ts,.tsx\" -Dd ./build && webpack --mode production"
+    "platforms-mozilla": "babel --config-file ./.babelrc ./app --extensions \".ts,.tsx\" -Dd ./platforms/mozilla/app && webpack --config ./platforms/mozilla/webpack.config.js --mode development",
+    "deploy-mozilla": "babel --config-file ./.babelrc ./app --extensions \".ts,.tsx\" -Dd ./platforms/mozilla/app && webpack --config ./platforms/mozilla/webpack.config.js --mode production",
+    "platforms-chromium": "babel --config-file ./.babelrc ./app --extensions \".ts,.tsx\" -Dd ./platforms/chromium/app && webpack --config ./platforms/chromium/webpack.config.js --mode development",
+    "deploy-chromium": "babel --config-file ./.babelrc ./app --extensions \".ts,.tsx\" -Dd ./platforms/chromium/app && webpack --config ./platforms/chromium/webpack.config.js --mode production"
   },
   "repository": {
     "type": "git",
