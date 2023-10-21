@@ -1,6 +1,7 @@
 import browser from "webextension-polyfill";
 import {calculateTimeSpentForDomain, getActiveTabDomainFromURL} from "../popup/Utils";
 import {storeTimeSpentSummary} from "../popup/Utils";
+// @ts-ignore
 import Database from "./Database";
 
 browser.tabs.onActivated.addListener((activeInfo) => {
@@ -19,8 +20,10 @@ browser.windows.onFocusChanged.addListener((id) => {
     const windowInactiveID = -1;
     const db = new Database();
     if (id === windowInactiveID) {
-        calculateTimeSpentForDomain(db.readPreviousDomain());
-        db.writePreviousDomain("");
+        db.readPreviousDomain((domain: string) => {
+            calculateTimeSpentForDomain(domain);
+            db.writePreviousDomain("");
+        });
     } else {
         browser.tabs.query({active: true}).then((tab) => {
             const newFocusedDomain = getActiveTabDomainFromURL(tab[0].url || "");

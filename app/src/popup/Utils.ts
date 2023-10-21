@@ -1,3 +1,4 @@
+// @ts-ignore
 import Database from "../engine/Database";
 
 export interface Icon {
@@ -29,21 +30,22 @@ export const getWebsiteIconObject = (websiteURL: string | undefined): Icon => {
 
 export function storeTimeSpentSummary(currentDomain: string) {
     const db = new Database();
-    const previousDomain = db.readPreviousDomain();
-
-    if (currentDomain.length > 0 && previousDomain !== currentDomain) {
-        db.writePreviousDomain(currentDomain);
-        db.writeLastActive(currentDomain, new Date());
-        calculateTimeSpentForDomain(previousDomain);
-    }
+    db.readPreviousDomain((domain: string) => {
+        if (currentDomain.length > 0 && domain !== currentDomain) {
+            db.writePreviousDomain(currentDomain);
+            db.writeLastActive(currentDomain, new Date());
+            calculateTimeSpentForDomain(domain);
+        }
+    });
 }
 
 export function calculateTimeSpentForDomain(domain: string) {
     const db = new Database();
-    const lastActive = db.readLastActive(domain);
-    const timeSpent = Math.trunc(Math.abs(Date.now() - lastActive.getTime()) / 1000);
-    const totalTimeSpentOfLastActive = (db.readTimeSpent(domain) as number) + timeSpent;
-    db.writeTimeSpent(domain, totalTimeSpentOfLastActive);
+    db.readLastActive(domain, (date: Date) => {
+        db.readTimeSpent((timeSpent: number) => {
+            db.writeTimeSpent(domain, Math.trunc(Math.abs(Date.now() - date.getTime()) / 1000) + timeSpent);
+        }, domain);
+    });
 }
 
 export const howManyHoursInSeconds = (timeInSeconds: number): number => {
