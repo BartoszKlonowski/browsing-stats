@@ -114,7 +114,7 @@ class Database {
             browser.storage.local.get("lastActive").then((content) => {
                 const lastActiveMap =
                     content && Object.keys(content).length
-                        ? new Map<string, Date>(Object.entries(content.lastActive))
+                        ? new Map<string, Date>(Object.values(content.lastActive))
                         : new Map<string, Date>([]);
                 onReturn(new Date(lastActiveMap.get(domain) || new Date()));
             });
