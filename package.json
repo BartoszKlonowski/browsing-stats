@@ -70,7 +70,10 @@
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "<rootDir>/__tests__/setupTests.ts"
-    ]
+    ],
+    "moduleNameMapper": {
+      "../engine/Database" : "<rootDir>/platforms/mozilla/app/src/engine/Database.ts"
+    }
   },
   "prettier": {
     "trailingComma": "es5",
