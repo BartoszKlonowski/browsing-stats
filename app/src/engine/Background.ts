@@ -1,7 +1,6 @@
 import browser from "webextension-polyfill";
 import {calculateTimeSpentForDomain, getActiveTabDomainFromURL} from "../popup/Utils";
 import {storeTimeSpentSummary} from "../popup/Utils";
-// @ts-ignore
 import Database from "./Database";
 
 browser.tabs.onActivated.addListener((activeInfo) => {

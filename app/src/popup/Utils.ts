@@ -1,4 +1,3 @@
-// @ts-ignore
 import Database from "../engine/Database";
 
 export interface Icon {
@@ -42,8 +41,8 @@ export function storeTimeSpentSummary(currentDomain: string) {
 export function calculateTimeSpentForDomain(domain: string) {
     const db = new Database();
     db.readLastActive(domain, (date: Date) => {
-        db.readTimeSpent((timeSpent: number) => {
-            db.writeTimeSpent(domain, Math.trunc(Math.abs(Date.now() - date.getTime()) / 1000) + timeSpent);
+        db.readTimeSpent((content: number | Map<string, number>) => {
+            db.writeTimeSpent(domain, Math.trunc(Math.abs(Date.now() - date.getTime()) / 1000) + (content as number));
         }, domain);
     });
 }
