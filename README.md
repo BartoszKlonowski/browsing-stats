@@ -1,7 +1,7 @@
 <p align="center">
     <h1 align="center">
         <img align="center" src="./app/icons/mainIcon.png" width="100px" height="100px"/>
-        How long I've been here?
+        Browsing Stats
     </h1>
 </p>
 <p align="center">
@@ -11,16 +11,15 @@
     <a href="https://github.com/BartoszKlonowski/browsing-stats/blob/main/LICENSE">
         <img src="https://img.shields.io/github/license/BartoszKlonowski/browsing-stats?style=plastic" alt="How Long Ive Been Here is released under the GNU GPL v3 license." />
     </a>
-    <a href="https://github.com/BartoszKlonowski/browsing-stats/actions/workflows/HowLongIveBeenHere-UT.yml">
-        <img src="https://img.shields.io/github/actions/workflow/status/BartoszKlonowski/browsing-stats/HowLongIveBeenHere-UT.yml?label=Tests&style=plastic" alt="Unit Tests status" />
+    <a href="https://github.com/BartoszKlonowski/browsing-stats/actions/workflows/BrowsingStats-UT.yml">
+        <img src="https://img.shields.io/github/actions/workflow/status/BartoszKlonowski/browsing-stats/BrowsingStats-UT.yml?label=Tests&style=plastic" alt="Unit Tests status" />
     </a>
-    <a href="https://github.com/BartoszKlonowski/browsing-stats/actions/workflows/HowLongIveBeenHere-CI.yml">
-        <img src="https://img.shields.io/github/actions/workflow/status/BartoszKlonowski/browsing-stats/HowLongIveBeenHere-CI.yml?label=Extension%20verification&style=plastic" alt="Package verification status" />
+    <a href="https://github.com/BartoszKlonowski/browsing-stats/actions/workflows/BrowsingStats-CI.yml">
+        <img src="https://img.shields.io/github/actions/workflow/status/BartoszKlonowski/browsing-stats/BrowsingStats-CI.yml?label=Extension%20verification&style=plastic" alt="Package verification status" />
     </a>
 </p>
 
-This project is the Mozilla Firefox extension plugin.
-<br/>It's purpose is to allow user to track, monitor the time spent on each website.
+The purpose of this web-browser's add-on is to allow user to track and gather statistics the time spent on each website.
 
 **How does it work?**
 
@@ -30,15 +29,15 @@ What it means is that, for example of youtube service - this extension will calc
 
 **Privacy**
 
-This extension is to allow user to track his time, not to gather any data for statistics.
-<br/>This extension does not sends any data to anywhere, but saves the data locally on your machine so that **your data stays with you**.
+This extension does not sends any data to anywhere, but saves the data locally on your machine so that:
+<br/>**your data stays with you**.
 
 ---
   
 ## Installation & Usage ##
 
 This extension can be installed by:
-* installing it via the Mozilla add-ons market by clicking the button bellow:<br/><a href="https://addons.mozilla.org/pl/firefox/addon/how-long-i-ve-been-here/"><img src="./.github/resources/get-the-addon.png" alt="" /></a>
+* installing it via the Mozilla add-ons market by clicking the button bellow:<br/><a href="https://addons.mozilla.org/pl/firefox/addon/browsing-stats/"><img src="./.github/resources/get-the-addon.png" alt="" /></a>
 * downloading it directly from the [Releases page](https://github.com/BartoszKlonowski/browsing-stats/releases) and install it manually in your browser
 
 After successful installation you will see the extension icon in the upper-right corner of your browser.
