@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "How long I've been here?",
-  "version": "1.2.0",
+  "name": "Browsing Stats",
+  "version": "1.0.0",
 
   "permissions": [
     "activeTab",
@@ -20,10 +20,10 @@
     "800": "icons/mainIcon@4x.png"
   },
 
-  "description": "Monitors and displays time spent on each website",
+  "description": "Monitors and display stats about visiting websites",
 
   "browser_action": {
-    "default_title": "How long I've been here",
+    "default_title": "Browsing Stats",
     "default_popup": "src/popup/Popup.html",
     "default_icon": "icons/mainIcon@4x.png"
   }

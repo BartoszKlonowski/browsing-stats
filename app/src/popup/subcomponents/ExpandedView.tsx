@@ -1,11 +1,20 @@
-import React from "react";
+import React, {useMemo, useState} from "react";
 import {getHours, getMinutes, getSeconds, getWebsiteIconObject} from "../Utils";
 import Database from "../../engine/Database";
 
 export const ExpandedView = () => {
     const renderTimeSpentList = () => {
         const db = new Database();
-        const timeSpentTilesData = [...(db.readTimeSpent() as Map<string, number>)];
+        const [timeSpentTilesData, setTimeSpentTilesData] = useState(new Map<string, number>([]));
+
+        useMemo(
+            () =>
+                db.readTimeSpent((data: number | Map<string, number>) => {
+                    setTimeSpentTilesData(data as Map<string, number>);
+                }),
+            []
+        );
+
         return (
             <ul className="expanded-view-list">
                 {[...timeSpentTilesData].map(([domain, timeSpentInSeconds]) => (

@@ -4,7 +4,7 @@ class Database {
         this.storage = window.localStorage;
     }
 
-    writeTimeSpent(domain: string, timeSpentInSeconds: number) {
+    writeTimeSpent(domain: string, timeSpentInSeconds: number): void {
         if (domain.length === 0) {
             return;
         }
@@ -25,7 +25,7 @@ class Database {
         }
     }
 
-    readTimeSpent(domain?: string): number | Map<string, number> {
+    readTimeSpent(onResult: (content: number | Map<string, number>) => void, domain?: string): void {
         if (domain !== undefined) {
             try {
                 const timeSpentObject = this.storage.getItem("timeSpent");
@@ -33,10 +33,10 @@ class Database {
                     timeSpentObject && timeSpentObject !== "{}"
                         ? new Map<string, number>(JSON.parse(timeSpentObject))
                         : new Map<string, number>([]);
-                return timeSpentMap.get(domain) || 0;
+                onResult(timeSpentMap.get(domain) || 0);
             } catch (exception) {
                 console.error("ERROR: ", exception);
-                return 0;
+                onResult(0);
             }
         } else {
             try {
@@ -45,15 +45,15 @@ class Database {
                     timeSpentObject && timeSpentObject !== "{}"
                         ? new Map<string, number>(JSON.parse(timeSpentObject))
                         : new Map<string, number>([]);
-                return timeSpentMap;
+                onResult(timeSpentMap);
             } catch (exception) {
                 console.error("ERROR: ", exception);
-                return new Map<string, number>([]);
+                onResult(new Map<string, number>([]));
             }
         }
     }
 
-    writePreviousDomain(domain: string) {
+    writePreviousDomain(domain: string): void {
         try {
             this.storage.setItem("previousDomain", domain);
         } catch (exception) {
@@ -61,16 +61,16 @@ class Database {
         }
     }
 
-    readPreviousDomain(): string {
+    readPreviousDomain(onResult: (domain: string) => void): void {
         try {
-            return this.storage.getItem("previousDomain") || "";
+            onResult(this.storage.getItem("previousDomain") || "");
         } catch (exception) {
             console.error("ERROR: ", exception);
-            return "";
+            onResult("");
         }
     }
 
-    writeLastActive(domain: string, date: Date) {
+    writeLastActive(domain: string, date: Date): void {
         try {
             const lastActiveObject = this.storage.getItem("lastActive");
             if (lastActiveObject && lastActiveObject.length && lastActiveObject !== "{}") {
@@ -88,17 +88,17 @@ class Database {
         }
     }
 
-    readLastActive(domain: string): Date {
+    readLastActive(domain: string, onReturn: (date: Date) => void): void {
         try {
             const lastActiveObject = this.storage.getItem("lastActive");
             const lastActiveMap =
                 lastActiveObject && lastActiveObject !== "{}"
                     ? new Map<string, Date>(JSON.parse(lastActiveObject))
                     : new Map<string, Date>([]);
-            return new Date(lastActiveMap.get(domain) || new Date());
+            onReturn(new Date(lastActiveMap.get(domain) || new Date()));
         } catch (exception) {
             console.error("ERROR: ", exception);
-            return new Date();
+            onReturn(new Date());
         }
     }
 }

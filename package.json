@@ -5,10 +5,14 @@
   "main": "manifest.json",
   "scripts": {
     "test": "jest",
+    "lint": "eslint app/ platforms/chromium/app/src/engine/Database.ts platforms/mozilla/app/src/engine/Database.ts",
+    "typecheck": "tsc --noEmit",
     "package-verify": "eslint . && npm run deploy && web-ext --source-dir ./build lint",
     "ci": "npm run test && npm run package-verify",
-    "build": "babel --config-file ./.babelrc ./app --extensions \".ts,.tsx\" -Dd ./build && webpack --mode development",
-    "deploy": "babel --config-file ./.babelrc ./app --extensions \".ts,.tsx\" -Dd ./build && webpack --mode production"
+    "platforms-mozilla": "babel --config-file ./.babelrc ./app ./platforms/mozilla/app --extensions \".ts,.tsx\" -Dd ./platforms/mozilla/app && webpack --config ./platforms/mozilla/webpack.config.js --mode development",
+    "deploy-mozilla": "babel --config-file ./.babelrc ./app ./platforms/mozilla/app --extensions \".ts,.tsx\" -Dd ./platforms/mozilla/app && webpack --config ./platforms/mozilla/webpack.config.js --mode production",
+    "platforms-chromium": "babel --config-file ./.babelrc ./app ./platforms/chromium/app --extensions \".ts,.tsx\" -Dd ./platforms/chromium/app && webpack --config ./platforms/chromium/webpack.config.js --mode development",
+    "deploy-chromium": "babel --config-file ./.babelrc ./app ./platforms/chromium/app --extensions \".ts,.tsx\" -Dd ./platforms/chromium/app && webpack --config ./platforms/chromium/webpack.config.js --mode production"
   },
   "repository": {
     "type": "git",
@@ -68,7 +72,10 @@
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "<rootDir>/__tests__/setupTests.ts"
-    ]
+    ],
+    "moduleNameMapper": {
+      "../engine/Database" : "<rootDir>/platforms/mozilla/app/src/engine/Database.ts"
+    }
   },
   "prettier": {
     "trailingComma": "es5",

@@ -1,5 +1,9 @@
 {
-  "include": ["./app/src/**/*"],
+  "include": [
+    "./app/src/**/*",
+    "./platforms/mozilla/app/src/engine/Database.ts",
+    "./platforms/chromium/app/src/engine/Database.ts"
+  ],
 
   "compilerOptions": {
     "jsx": "react",

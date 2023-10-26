@@ -19,8 +19,10 @@ browser.windows.onFocusChanged.addListener((id) => {
     const windowInactiveID = -1;
     const db = new Database();
     if (id === windowInactiveID) {
-        calculateTimeSpentForDomain(db.readPreviousDomain());
-        db.writePreviousDomain("");
+        db.readPreviousDomain((domain: string) => {
+            calculateTimeSpentForDomain(domain);
+            db.writePreviousDomain("");
+        });
     } else {
         browser.tabs.query({active: true}).then((tab) => {
             const newFocusedDomain = getActiveTabDomainFromURL(tab[0].url || "");
