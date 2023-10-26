@@ -1,6 +1,5 @@
 import React, {useMemo, useState} from "react";
 import {getHours, getMinutes, getSeconds, getWebsiteIconObject} from "../Utils";
-// @ts-ignore
 import Database from "../../engine/Database";
 
 export const ExpandedView = () => {

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {getActiveTabDomainFromURL, getHours, getMinutes, getSeconds, getWebsiteIconObject, Icon} from "../Utils";
 import browser from "webextension-polyfill";
-// @ts-ignore
 import Database from "../../engine/Database";
 
 const getCurrentTimeForCurrentDomain = (domain: string, onResult: (content: number | Map<string, number>) => void) => {
