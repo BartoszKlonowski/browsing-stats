@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint app/ platforms/chromium/app/src/engine/Database.ts platforms/mozilla/app/src/engine/Database.ts",
+    "typecheck": "tsc --noEmit",
     "package-verify": "eslint . && npm run deploy && web-ext --source-dir ./build lint",
     "ci": "npm run test && npm run package-verify",
     "platforms-mozilla": "babel --config-file ./.babelrc ./app ./platforms/mozilla/app --extensions \".ts,.tsx\" -Dd ./platforms/mozilla/app && webpack --config ./platforms/mozilla/webpack.config.js --mode development",

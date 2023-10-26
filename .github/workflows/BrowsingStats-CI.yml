@@ -43,6 +43,9 @@ jobs:
       - name: Run ESLint on the sources
         run: npm run lint
 
+      - name: Run typechecking on the sources
+        run: npm run typecheck
+
   pre-build-package-verify:
     name: Verify the package before build
     runs-on: windows-latest
