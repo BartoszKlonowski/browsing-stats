@@ -125,7 +125,7 @@ jobs:
         run: npx web-ext build --source-dir "./platforms/mozilla/app" --overwrite-dest
 
       - name: Store the built package
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: release-candidate-package-mozilla
           path: ./web-ext-artifacts/*
@@ -134,7 +134,7 @@ jobs:
         run: npx web-ext build --source-dir "./platforms/chromium/app" --overwrite-dest
 
       - name: Store the built package
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: release-candidate-package-chromium
           path: ./web-ext-artifacts/*
