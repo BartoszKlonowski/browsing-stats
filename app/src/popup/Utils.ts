@@ -30,7 +30,7 @@ export const getWebsiteIconObject = (websiteURL: string | undefined): Icon => {
 export function storeTimeSpentSummary(currentDomain: string) {
     const db = new Database();
     db.readPreviousDomain((domain: string) => {
-        if (currentDomain.length > 0 && domain !== currentDomain) {
+        if (!!currentDomain.length && domain !== currentDomain) {
             db.writePreviousDomain(currentDomain);
             db.writeLastActive(currentDomain, new Date());
             calculateTimeSpentForDomain(domain);
