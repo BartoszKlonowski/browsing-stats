@@ -1,5 +1,11 @@
 {
     "duration-header": "Pasé aquí",
     "expand-button-label": "Más",
-    "shrink-button-label": "Menos"
+    "shrink-button-label": "Menos",
+    "sort-label": "Clasificar",
+    "option-nameascending": "Sitio web: Ascendente",
+    "option-namedescending": "Sitio web: Descendente",
+    "option-timeascending": "Hora: Ascendente",
+    "option-timedescending": "Tiempo: Descendente",
+    "option-none": "Ninguna"
 }

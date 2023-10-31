@@ -1,5 +1,11 @@
 {
     "duration-header": "Dépensé ici",
     "expand-button-label": "Mieux",
-    "shrink-button-label": "Moins"
+    "shrink-button-label": "Moins",
+    "sort-label": "Trier",
+    "option-nameascending": "Site Web: Ascendant",
+    "option-namedescending": "Site Web: Décroissant",
+    "option-timeascending": "Heure: Croissant",
+    "option-timedescending": "Heure: Décroissante",
+    "option-none": "Aucun"
 }

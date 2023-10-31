@@ -1,5 +1,11 @@
 {
     "duration-header": "Hier verbracht",
     "expand-button-label": "Mehr",
-    "shrink-button-label": "Weniger"
+    "shrink-button-label": "Weniger",
+    "sort-label": "Sortieren",
+    "option-nameascending": "Website: Aufsteigend",
+    "option-namedescending": "Website: Absteigend",
+    "option-timeascending": "Zeit: Aufsteigend",
+    "option-timedescending": "Zeit: Absteigend",
+    "option-none": "Keine"
 }
