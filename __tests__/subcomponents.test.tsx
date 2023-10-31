@@ -3,6 +3,8 @@ import TestRenderer, {act, ReactTestInstance, ReactTestRenderer} from "react-tes
 import ShrinkedView from "../app/src/popup/subcomponents/ShrinkedView";
 import ExpandedView from "../app/src/popup/subcomponents/ExpandedView";
 import ViewChangeButton from "../app/src/popup/subcomponents/ViewChangeButton";
+import SortingList from "../app/src/popup/subcomponents/SortingList";
+import { Sort } from "../app/src/popup/Utils";
 
 function renderElement(element: JSX.Element): ReactTestRenderer {
     const component = TestRenderer.create(element);
@@ -129,5 +131,30 @@ describe("ViewChangeButton", () => {
             />
         );
         expect(button.type).toBe("button");
+    });
+});
+
+describe("Sorting", () => {
+    it("renders correctly according to snapshot", () => {
+        const sortList = renderElement(
+            <SortingList onSelect={(_: Sort): void => {} } />
+        );
+        expect(sortList).toMatchSnapshot();
+    });
+
+    it("initially renders with the option 'None'", async () => {
+        global.browser.i18n.getUILanguage = () => "EN";
+        const sortList = await renderElementAsObject(
+            <SortingList onSelect={(_: Sort): void => {} } />
+        );
+        expect(getChild(getChild(sortList, 1), 0)).toBe("None");
+    });
+
+    it("does not render the list when not clicked", async () => {
+        global.browser.i18n.getUILanguage = () => "EN";
+        const sortList = await renderElementAsObject(
+            <SortingList onSelect={(_: Sort): void => {} } />
+        );
+        expect(getChild(sortList, 2)).toBeUndefined();
     });
 });
