@@ -5,6 +5,26 @@ export interface Icon {
     src: string;
 }
 
+export enum Sort {
+    NameAscending = "option-nameascending",
+    NameDescending = "option-namedescending",
+    TimeAscending = "option-timeascending",
+    TimeDescending = "option-timedescending",
+    None = "option-none",
+}
+
+export const optionEventValueToSortEnum = (optionEvent?: string): Sort => {
+    switch (optionEvent) {
+        case Sort.NameAscending:
+        case Sort.NameDescending:
+        case Sort.TimeAscending:
+        case Sort.TimeDescending:
+            return optionEvent as Sort;
+        default:
+            return Sort.None;
+    }
+};
+
 export const getActiveTabDomainFromURL = (URL: string): string | null => {
     let result = URL.replace("https://", "");
     result = result.replace("http://", "");

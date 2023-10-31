@@ -4,6 +4,8 @@ import {
     howManyHoursInSeconds,
     howManyMinutesInSeconds,
     howManySecondsInSeconds,
+    optionEventValueToSortEnum,
+    Sort,
 } from "../app/src/popup/Utils";
 
 describe("getActiveTabDomainFromURL", () => {
@@ -111,5 +113,23 @@ describe("howManySecondsInSeconds", () => {
     it("returns 0 for number of seconds equal to one minute", () => {
         const seconds = 60;
         expect(howManySecondsInSeconds(seconds)).toBe(0);
+    });
+});
+
+describe("optionEventValueToSortEnum", () => {
+    it("returns 'None' for incorrect string", () => {
+        expect(optionEventValueToSortEnum("incorrect")).toBe(Sort.None);
+        expect(optionEventValueToSortEnum("")).toBe(Sort.None);
+    });
+
+    it("returns appropiate label for correct string", () => {
+        expect(optionEventValueToSortEnum(Sort.NameAscending)).toBe(Sort.NameAscending);
+        expect(optionEventValueToSortEnum(Sort.NameDescending)).toBe(Sort.NameDescending);
+        expect(optionEventValueToSortEnum(Sort.TimeAscending)).toBe(Sort.TimeAscending);
+        expect(optionEventValueToSortEnum(Sort.TimeDescending)).toBe(Sort.TimeDescending);
+    });
+
+    it("returns 'None' option for missing string information", () => {
+        expect(optionEventValueToSortEnum(undefined)).toBe(Sort.None);
     });
 });
