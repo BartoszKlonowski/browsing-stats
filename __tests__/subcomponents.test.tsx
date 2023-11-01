@@ -157,4 +157,12 @@ describe("Sorting", () => {
         );
         expect(getChild(sortList, 2)).toBeUndefined();
     });
+
+    it("renders the complete list when clicked", async () => {
+        global.browser.i18n.getUILanguage = () => "EN";
+        const sortList = await renderElementAsObject(
+            <SortingList onSelect={(_: Sort): void => {} } />
+        );
+        expect(getChild(sortList, 1)).toBeDefined();
+    });
 });

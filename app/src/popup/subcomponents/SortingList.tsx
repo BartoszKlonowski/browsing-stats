@@ -61,7 +61,7 @@ const SortingList = ({onSelect}: Props) => {
                 {`${options.find((option) => option.value === currentOption)?.label}`}
                 {isExpanded ? (
                     <OptionsList
-                        options={options}
+                        options={options.filter(option => option.value !== currentOption)}
                         onSelected={(value) => {
                             setCurrentOption(value);
                             onSelect(value);
