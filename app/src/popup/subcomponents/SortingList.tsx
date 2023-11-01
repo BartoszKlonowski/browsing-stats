@@ -59,17 +59,17 @@ const SortingList = ({onSelect}: Props) => {
             <div className="sorting-options-label">{`${translate("sort-label")}: `}</div>
             <div className="sorting-header-button" onClick={() => setExpand(!isExpanded)}>
                 {`${options.find((option) => option.value === currentOption)?.label}`}
+                {isExpanded ? (
+                    <OptionsList
+                        options={options}
+                        onSelected={(value) => {
+                            setCurrentOption(value);
+                            onSelect(value);
+                            setExpand(!isExpanded);
+                        }}
+                    />
+                ) : null}
             </div>
-            {isExpanded ? (
-                <OptionsList
-                    options={options}
-                    onSelected={(value) => {
-                        setCurrentOption(value);
-                        onSelect(value);
-                        setExpand(!isExpanded);
-                    }}
-                />
-            ) : null}
         </div>
     );
 };
