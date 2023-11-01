@@ -147,7 +147,7 @@ describe("Sorting", () => {
         const sortList = await renderElementAsObject(
             <SortingList onSelect={(_: Sort): void => {} } />
         );
-        expect(getChild(getChild(sortList, 1), 0)).toBe("None");
+        expect(getChild(getChild(getChild(getChild(sortList, 1), 0), 0), 0)).toBe("None");
     });
 
     it("does not render the list when not clicked", async () => {

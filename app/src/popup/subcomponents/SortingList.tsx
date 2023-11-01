@@ -14,6 +14,7 @@ interface OptionProps {
 interface OptionsListProps {
     options: {value: Sort; label: string}[];
     onSelected: (value: Sort) => void;
+    currentValue: Sort;
 }
 
 const Option = ({label, selected}: OptionProps) => {
@@ -28,18 +29,26 @@ const Option = ({label, selected}: OptionProps) => {
     );
 };
 
-const OptionsList = ({options, onSelected}: OptionsListProps) => {
+const OptionsList = ({options, onSelected, currentValue}: OptionsListProps) => {
+    const [isExpanded, expand] = useState(false);
+    const listToRender = options.filter((option) => option.value !== currentValue);
     return (
         <div className="sorting-options-list-container">
-            {options.map((option) => {
-                return (
-                    <Option
-                        key={`option-${option.value}`}
-                        label={option.label}
-                        selected={() => onSelected(option.value)}
-                    />
-                );
-            })}
+            <Option key={"current-option"} label={translate(currentValue)} selected={() => expand(!isExpanded)} />
+            {isExpanded
+                ? listToRender.map((option) => {
+                      return (
+                          <Option
+                              key={`option-${option.value}`}
+                              label={option.label}
+                              selected={() => {
+                                  onSelected(option.value);
+                                  expand(false);
+                              }}
+                          />
+                      );
+                  })
+                : null}
         </div>
     );
 };
@@ -57,19 +66,15 @@ const SortingList = ({onSelect}: Props) => {
     return (
         <div className="sorting-container">
             <div className="sorting-options-label">{`${translate("sort-label")}: `}</div>
-            <div className="sorting-header-button" onClick={() => setExpand(!isExpanded)}>
-                {`${options.find((option) => option.value === currentOption)?.label}`}
-                {isExpanded ? (
-                    <OptionsList
-                        options={options.filter(option => option.value !== currentOption)}
-                        onSelected={(value) => {
-                            setCurrentOption(value);
-                            onSelect(value);
-                            setExpand(!isExpanded);
-                        }}
-                    />
-                ) : null}
-            </div>
+            <OptionsList
+                options={options}
+                onSelected={(value) => {
+                    setCurrentOption(value);
+                    onSelect(value);
+                    setExpand(!isExpanded);
+                }}
+                currentValue={currentOption}
+            />
         </div>
     );
 };

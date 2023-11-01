@@ -246,10 +246,18 @@ exports[`Sorting renders correctly according to snapshot 1`] = `
     Sort: 
   </div>
   <div
-    className="sorting-header-button"
-    onClick={[Function]}
+    className="sorting-options-list-container"
   >
-    None
+    <div
+      className="sorting-option-tile-container"
+      onClick={[Function]}
+    >
+      <div
+        className="sorting-option-tile-label"
+      >
+        None
+      </div>
+    </div>
   </div>
 </div>
 `;
