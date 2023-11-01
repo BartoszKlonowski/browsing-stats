@@ -19,8 +19,10 @@
   padding: 1px;
 }
 .duration-header {
+  display: flex;
+  flex-direction: row;
   align-content: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 5px;
   height: 40px;
 }
@@ -28,6 +30,34 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: medium;
   padding: 5px;
+}
+.sorting-container {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  width: 240px;
+  cursor: default;
+}
+.sorting-option-tile-container {
+  margin: 2px;
+  cursor: pointer;
+}
+.sorting-option-tile-label {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: small;
+}
+.sorting-options-label {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 2px;
+  font-size: small;
+}
+.sorting-options-list-container {
+  height: fit-content;
+  position: relative;
+  background-color: #F2F2F2;
+  box-shadow: 0px 3px 3px #FC4D17;
+  border-left: 2px solid #FC4D17;
+  border-radius: 5px;
 }
 .shrinked-view-container {
   padding: 5px;
