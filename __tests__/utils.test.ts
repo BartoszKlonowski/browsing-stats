@@ -6,6 +6,7 @@ import {
     howManySecondsInSeconds,
     optionEventValueToSortEnum,
     Sort,
+    sortDataEntries,
 } from "../app/src/popup/Utils";
 
 describe("getActiveTabDomainFromURL", () => {
@@ -72,6 +73,69 @@ describe("getWebsiteIconObject", () => {
             size: 20,
             src: "../resources/missing-website-favicon.png",
         });
+    });
+});
+
+describe("sortDataEntries", () => {
+    it("returns unmodified dataset when no sorting", () => {
+        const dataset = new Map<string, number>([
+            ["test", 1],
+            ["a", 2],
+            ["b", 3],
+        ]);
+        expect(sortDataEntries(dataset, Sort.None)).toEqual(dataset);
+    });
+    it("returns correctly sorted dataset with time ascending selected", () => {
+        const dataset = new Map<string, number>([
+            ["test", 3],
+            ["a", 12],
+            ["b", 1],
+        ]);
+        const expected = new Map<string, number>([
+            ["b", 1],
+            ["test", 3],
+            ["a", 12],
+        ]);
+        expect(sortDataEntries(dataset, Sort.TimeAscending)).toEqual(expected);
+    });
+    it("returns correctly sorted dataset with time descending selected", () => {
+        const dataset = new Map<string, number>([
+            ["test", 3],
+            ["a", 12],
+            ["b", 1],
+        ]);
+        const expected = new Map<string, number>([
+            ["a", 12],
+            ["test", 3],
+            ["b", 1],
+        ]);
+        expect(sortDataEntries(dataset, Sort.TimeDescending)).toEqual(expected);
+    });
+    it("returns correctly sorted dataset with name descending selected", () => {
+        const dataset = new Map<string, number>([
+            ["test", 3],
+            ["a", 12],
+            ["b", 1],
+        ]);
+        const expected = new Map<string, number>([
+            ["test", 3],
+            ["b", 1],
+            ["a", 12],
+        ]);
+        expect(sortDataEntries(dataset, Sort.NameDescending)).toEqual(expected);
+    });
+    it("returns correctly sorted dataset with name ascending selected", () => {
+        const dataset = new Map<string, number>([
+            ["test", 3],
+            ["a", 12],
+            ["b", 1],
+        ]);
+        const expected = new Map<string, number>([
+            ["a", 12],
+            ["b", 1],
+            ["test", 3],
+        ]);
+        expect(sortDataEntries(dataset, Sort.NameAscending)).toEqual(expected);
     });
 });
 

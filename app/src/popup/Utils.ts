@@ -58,6 +58,25 @@ export function storeTimeSpentSummary(currentDomain: string) {
     });
 }
 
+export const sortDataEntries = (data: Map<string, number>, sortMethod: Sort) => {
+    return new Map(
+        [...data].sort((entry1: [string, number], entry2: [string, number]) => {
+            switch (sortMethod) {
+                case Sort.NameAscending:
+                    return entry1[0] < entry2[0] ? -1 : 1;
+                case Sort.NameDescending:
+                    return entry1[0] > entry2[0] ? -1 : 1;
+                case Sort.TimeAscending:
+                    return entry1[1] - entry2[1];
+                case Sort.TimeDescending:
+                    return entry2[1] - entry1[1];
+                default:
+                    return 0;
+            }
+        })
+    );
+};
+
 export function calculateTimeSpentForDomain(domain: string) {
     const db = new Database();
     db.readLastActive(domain, (date: Date) => {
