@@ -1,5 +1,11 @@
 {
     "duration-header": "Spent here",
     "expand-button-label": "More",
-    "shrink-button-label": "Less"
+    "shrink-button-label": "Less",
+    "sort-label": "Sort",
+    "option-nameascending": "Website: Ascending",
+    "option-namedescending": "Website: Descending",
+    "option-timeascending": "Time: Ascending",
+    "option-timedescending": "Time: Descending",
+    "option-none": "None"
 }

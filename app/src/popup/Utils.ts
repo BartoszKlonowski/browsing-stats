@@ -5,6 +5,26 @@ export interface Icon {
     src: string;
 }
 
+export enum Sort {
+    NameAscending = "option-nameascending",
+    NameDescending = "option-namedescending",
+    TimeAscending = "option-timeascending",
+    TimeDescending = "option-timedescending",
+    None = "option-none",
+}
+
+export const optionEventValueToSortEnum = (optionEvent?: string): Sort => {
+    switch (optionEvent) {
+        case Sort.NameAscending:
+        case Sort.NameDescending:
+        case Sort.TimeAscending:
+        case Sort.TimeDescending:
+            return optionEvent as Sort;
+        default:
+            return Sort.None;
+    }
+};
+
 export const getActiveTabDomainFromURL = (URL: string): string | null => {
     let result = URL.replace("https://", "");
     result = result.replace("http://", "");
@@ -37,6 +57,25 @@ export function storeTimeSpentSummary(currentDomain: string) {
         }
     });
 }
+
+export const sortDataEntries = (data: Map<string, number>, sortMethod: Sort) => {
+    return new Map(
+        [...data].sort((entry1: [string, number], entry2: [string, number]) => {
+            switch (sortMethod) {
+                case Sort.NameAscending:
+                    return entry1[0] < entry2[0] ? -1 : 1;
+                case Sort.NameDescending:
+                    return entry1[0] > entry2[0] ? -1 : 1;
+                case Sort.TimeAscending:
+                    return entry1[1] - entry2[1];
+                case Sort.TimeDescending:
+                    return entry2[1] - entry1[1];
+                default:
+                    return 0;
+            }
+        })
+    );
+};
 
 export function calculateTimeSpentForDomain(domain: string) {
     const db = new Database();

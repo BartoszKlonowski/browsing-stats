@@ -3,6 +3,8 @@ import TestRenderer, {act, ReactTestInstance, ReactTestRenderer} from "react-tes
 import ShrinkedView from "../app/src/popup/subcomponents/ShrinkedView";
 import ExpandedView from "../app/src/popup/subcomponents/ExpandedView";
 import ViewChangeButton from "../app/src/popup/subcomponents/ViewChangeButton";
+import SortingList from "../app/src/popup/subcomponents/SortingList";
+import {Sort} from "../app/src/popup/Utils";
 
 function renderElement(element: JSX.Element): ReactTestRenderer {
     const component = TestRenderer.create(element);
@@ -71,7 +73,7 @@ describe("ShrinkedView", () => {
 
 describe("ExpandedView", () => {
     it("renders correctly according to snapshot", () => {
-        const expandedView = renderElement(<ExpandedView />);
+        const expandedView = renderElement(<ExpandedView sorted={Sort.None} />);
         expect(expandedView.toJSON()).toMatchSnapshot();
     });
 
@@ -79,7 +81,7 @@ describe("ExpandedView", () => {
         global._localStorage.getItem = (key: string) => {
             return key ? `{}` : null;
         };
-        const expandedView = await renderElementAsObject(<ExpandedView />);
+        const expandedView = await renderElementAsObject(<ExpandedView sorted={Sort.None} />);
         expect(expandedView).toBeDefined();
         expect(getChild(expandedView, 0).children).toBeNull();
     });
@@ -88,7 +90,7 @@ describe("ExpandedView", () => {
         global._localStorage.getItem = (key: string) => {
             return `[["${key}", 20], ["fake", 20]]`;
         };
-        const expandedView = await renderElementAsObject(<ExpandedView />);
+        const expandedView = await renderElementAsObject(<ExpandedView sorted={Sort.None} />);
         const mainList = getChild(expandedView, 0);
         expect(mainList.type).toBe("ul");
         expect(getChild(mainList, 0).type).toBe("li");
@@ -99,7 +101,7 @@ describe("ExpandedView", () => {
         global._localStorage.getItem = (key: string) => {
             return `[["first item", 10],["second item", 20],["${key}", 30]]`;
         };
-        const expandedView = await renderElementAsObject(<ExpandedView />);
+        const expandedView = await renderElementAsObject(<ExpandedView sorted={Sort.None} />);
         expect(getChild(expandedView, 0).children.length).toBe(3);
     });
 });
@@ -129,5 +131,54 @@ describe("ViewChangeButton", () => {
             />
         );
         expect(button.type).toBe("button");
+    });
+});
+
+describe("Sorting", () => {
+    it("renders correctly according to snapshot", () => {
+        const sortList = renderElement(
+            <SortingList
+                onSelect={(_: Sort): void => {
+                    _;
+                }}
+            />
+        );
+        expect(sortList).toMatchSnapshot();
+    });
+
+    it("initially renders with the option 'None'", async () => {
+        global.browser.i18n.getUILanguage = () => "EN";
+        const sortList = await renderElementAsObject(
+            <SortingList
+                onSelect={(_: Sort): void => {
+                    _;
+                }}
+            />
+        );
+        expect(getChild(getChild(getChild(getChild(sortList, 1), 0), 0), 0)).toBe("None");
+    });
+
+    it("does not render the list when not clicked", async () => {
+        global.browser.i18n.getUILanguage = () => "EN";
+        const sortList = await renderElementAsObject(
+            <SortingList
+                onSelect={(_: Sort): void => {
+                    _;
+                }}
+            />
+        );
+        expect(getChild(sortList, 2)).toBeUndefined();
+    });
+
+    it("renders the complete list when clicked", async () => {
+        global.browser.i18n.getUILanguage = () => "EN";
+        const sortList = await renderElementAsObject(
+            <SortingList
+                onSelect={(_: Sort): void => {
+                    _;
+                }}
+            />
+        );
+        expect(getChild(sortList, 1)).toBeDefined();
     });
 });

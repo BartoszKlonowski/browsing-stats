@@ -4,6 +4,9 @@ import {
     howManyHoursInSeconds,
     howManyMinutesInSeconds,
     howManySecondsInSeconds,
+    optionEventValueToSortEnum,
+    Sort,
+    sortDataEntries,
 } from "../app/src/popup/Utils";
 
 describe("getActiveTabDomainFromURL", () => {
@@ -73,6 +76,69 @@ describe("getWebsiteIconObject", () => {
     });
 });
 
+describe("sortDataEntries", () => {
+    it("returns unmodified dataset when no sorting", () => {
+        const dataset = new Map<string, number>([
+            ["test", 1],
+            ["a", 2],
+            ["b", 3],
+        ]);
+        expect(sortDataEntries(dataset, Sort.None)).toEqual(dataset);
+    });
+    it("returns correctly sorted dataset with time ascending selected", () => {
+        const dataset = new Map<string, number>([
+            ["test", 3],
+            ["a", 12],
+            ["b", 1],
+        ]);
+        const expected = new Map<string, number>([
+            ["b", 1],
+            ["test", 3],
+            ["a", 12],
+        ]);
+        expect(sortDataEntries(dataset, Sort.TimeAscending)).toEqual(expected);
+    });
+    it("returns correctly sorted dataset with time descending selected", () => {
+        const dataset = new Map<string, number>([
+            ["test", 3],
+            ["a", 12],
+            ["b", 1],
+        ]);
+        const expected = new Map<string, number>([
+            ["a", 12],
+            ["test", 3],
+            ["b", 1],
+        ]);
+        expect(sortDataEntries(dataset, Sort.TimeDescending)).toEqual(expected);
+    });
+    it("returns correctly sorted dataset with name descending selected", () => {
+        const dataset = new Map<string, number>([
+            ["test", 3],
+            ["a", 12],
+            ["b", 1],
+        ]);
+        const expected = new Map<string, number>([
+            ["test", 3],
+            ["b", 1],
+            ["a", 12],
+        ]);
+        expect(sortDataEntries(dataset, Sort.NameDescending)).toEqual(expected);
+    });
+    it("returns correctly sorted dataset with name ascending selected", () => {
+        const dataset = new Map<string, number>([
+            ["test", 3],
+            ["a", 12],
+            ["b", 1],
+        ]);
+        const expected = new Map<string, number>([
+            ["a", 12],
+            ["b", 1],
+            ["test", 3],
+        ]);
+        expect(sortDataEntries(dataset, Sort.NameAscending)).toEqual(expected);
+    });
+});
+
 describe("howManyHoursInSeconds", () => {
     it("calculates hours correctly regardless minutes, seconds", () => {
         const seconds = 568923;
@@ -111,5 +177,23 @@ describe("howManySecondsInSeconds", () => {
     it("returns 0 for number of seconds equal to one minute", () => {
         const seconds = 60;
         expect(howManySecondsInSeconds(seconds)).toBe(0);
+    });
+});
+
+describe("optionEventValueToSortEnum", () => {
+    it("returns 'None' for incorrect string", () => {
+        expect(optionEventValueToSortEnum("incorrect")).toBe(Sort.None);
+        expect(optionEventValueToSortEnum("")).toBe(Sort.None);
+    });
+
+    it("returns appropiate label for correct string", () => {
+        expect(optionEventValueToSortEnum(Sort.NameAscending)).toBe(Sort.NameAscending);
+        expect(optionEventValueToSortEnum(Sort.NameDescending)).toBe(Sort.NameDescending);
+        expect(optionEventValueToSortEnum(Sort.TimeAscending)).toBe(Sort.TimeAscending);
+        expect(optionEventValueToSortEnum(Sort.TimeDescending)).toBe(Sort.TimeDescending);
+    });
+
+    it("returns 'None' option for missing string information", () => {
+        expect(optionEventValueToSortEnum(undefined)).toBe(Sort.None);
     });
 });

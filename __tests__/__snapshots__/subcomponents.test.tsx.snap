@@ -236,6 +236,32 @@ exports[`ShrinkedView renders correctly according to snapshot 1`] = `
 </div>
 `;
 
+exports[`Sorting renders correctly according to snapshot 1`] = `
+<div
+  className="sorting-container"
+>
+  <div
+    className="sorting-options-label"
+  >
+    Sort: 
+  </div>
+  <div
+    className="sorting-options-list-container"
+  >
+    <div
+      className="sorting-option-tile-container"
+      onClick={[Function]}
+    >
+      <div
+        className="sorting-option-tile-label"
+      >
+        None
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`ViewChangeButton renders correctly regarding the snapshot 1`] = `
 <button
   className="view-change-button"
