@@ -1,8 +1,12 @@
 import React, {useMemo, useState} from "react";
-import {getHours, getMinutes, getSeconds, getWebsiteIconObject} from "../Utils";
+import {getHours, getMinutes, getSeconds, getWebsiteIconObject, Sort, sortDataEntries} from "../Utils";
 import Database from "../../engine/Database";
 
-export const ExpandedView = () => {
+interface Props {
+    sorted: Sort;
+}
+
+export const ExpandedView = ({sorted}: Props) => {
     const renderTimeSpentList = () => {
         const db = new Database();
         const [timeSpentTilesData, setTimeSpentTilesData] = useState(new Map<string, number>([]));
@@ -15,9 +19,10 @@ export const ExpandedView = () => {
             []
         );
 
+        const data = sortDataEntries(timeSpentTilesData, sorted);
         return (
             <ul className="expanded-view-list">
-                {[...timeSpentTilesData].map(([domain, timeSpentInSeconds]) => (
+                {[...data].map(([domain, timeSpentInSeconds]) => (
                     <li key={`timeSpentTile-${domain}`}>{renderTimeSpentTile(domain, timeSpentInSeconds)}</li>
                 ))}
             </ul>
