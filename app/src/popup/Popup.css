@@ -95,7 +95,7 @@
   align-items: center;
 }
 .expanded-view-list {
-  max-height: 400px;
+  max-height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
   list-style: none;
