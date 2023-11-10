@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {getActiveTabDomainFromURL, getHours, getMinutes, getSeconds, getWebsiteIconObject, Icon} from "../Utils";
 import browser from "webextension-polyfill";
 import Database from "../../engine/Database";
+import DurationHeader from "./DurationHeader";
 
 const getCurrentTimeForCurrentDomain = (domain: string, onResult: (content: number | Map<string, number>) => void) => {
     const db = new Database();
@@ -45,16 +46,19 @@ export const ShrinkedView = () => {
     });
 
     return (
-        <div className="shrinked-view-container">
-            <div className="shrinked-view-icon-container">
-                <img className="shrinked-view-icon" width={icon.size} height={icon.size} src={icon.src} />
-            </div>
-            <div className="shrinked-view-time-spent-text-container">
-                <div className="shrinked-view-time-spent-text">
-                    {getHours(timeInSeconds)}:{getMinutes(timeInSeconds)}:{getSeconds(timeInSeconds)}
+        <>
+            <DurationHeader />
+            <div className="shrinked-view-container">
+                <div className="shrinked-view-icon-container">
+                    <img className="shrinked-view-icon" width={icon.size} height={icon.size} src={icon.src} />
+                </div>
+                <div className="shrinked-view-time-spent-text-container">
+                    <div className="shrinked-view-time-spent-text">
+                        {getHours(timeInSeconds)}:{getMinutes(timeInSeconds)}:{getSeconds(timeInSeconds)}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

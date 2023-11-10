@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-import DurationHeader from "./subcomponents/DurationHeader";
 import ExpandedView from "./subcomponents/ExpandedView";
 import ShrinkedView from "./subcomponents/ShrinkedView";
 import ViewChangeButton from "./subcomponents/ViewChangeButton";
@@ -18,8 +17,7 @@ export const Popup = (): JSX.Element => {
 
     return (
         <div className="popup-view">
-            <DurationHeader isExpanded={expanded} onSortSelected={setSortingOrder} />
-            {expanded ? <ExpandedView sorted={order} /> : <ShrinkedView />}
+            {expanded ? <ExpandedView setSortingOrder={setSortingOrder} sorted={order} /> : <ShrinkedView />}
             <ViewChangeButton isExpanded={expanded} onClick={setExpanded} />
         </div>
     );
