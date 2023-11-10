@@ -7,5 +7,7 @@
     "option-namedescending": "Website: Absteigend",
     "option-timeascending": "Zeit: Aufsteigend",
     "option-timedescending": "Zeit: Absteigend",
-    "option-none": "Keine"
+    "option-none": "Keine",
+    "details-button-label": "Einzelheiten",
+    "details-screen-go-back-button-label": "Zurück"
 }

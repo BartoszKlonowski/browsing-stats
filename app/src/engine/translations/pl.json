@@ -7,5 +7,7 @@
     "option-namedescending": "Strona WWW: Malejąco",
     "option-timeascending": "Czas: Rosnąco",
     "option-timedescending": "Czas: Malejąco",
-    "option-none": "Brak"
+    "option-none": "Brak",
+    "details-button-label": "Szczegóły",
+    "details-screen-go-back-button-label": "Wróć"
 }
