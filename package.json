@@ -5,7 +5,7 @@
   "main": "manifest.json",
   "scripts": {
     "test": "jest",
-    "lint": "eslint app/ platforms/chromium/app/src/engine/Database.ts platforms/mozilla/app/src/engine/Database.ts",
+    "lint": "eslint app/ platforms/chromium/app/src/engine/Database.ts platforms/mozilla/app/src/engine/Database.ts __tests__/",
     "typecheck": "tsc --noEmit",
     "package-verify": "eslint . && npm run deploy && web-ext --source-dir ./build lint",
     "ci": "npm run test && npm run package-verify",
