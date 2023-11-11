@@ -7,5 +7,7 @@
     "option-namedescending": "Sitio web: Descendente",
     "option-timeascending": "Hora: Ascendente",
     "option-timedescending": "Tiempo: Descendente",
-    "option-none": "Ninguna"
+    "option-none": "Ninguna",
+    "details-button-label": "Detalles",
+    "details-view-back-button-label": "Regresa"
 }

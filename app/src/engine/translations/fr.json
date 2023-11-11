@@ -7,5 +7,7 @@
     "option-namedescending": "Site Web: Décroissant",
     "option-timeascending": "Heure: Croissant",
     "option-timedescending": "Heure: Décroissante",
-    "option-none": "Aucun"
+    "option-none": "Aucun",
+    "details-button-label": "Détails",
+    "details-view-back-button-label": "Retourner"
 }

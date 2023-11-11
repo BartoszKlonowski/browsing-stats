@@ -4,15 +4,14 @@ import SortingList from "./SortingList";
 import {Sort} from "../Utils";
 
 interface Props {
-    isExpanded: boolean;
-    onSortSelected: (option: Sort) => void;
+    onSortSelected?: (option: Sort) => void;
 }
 
-export const DurationHeader = ({isExpanded, onSortSelected}: Props) => {
+export const DurationHeader = ({onSortSelected}: Props) => {
     return (
         <div className="duration-header">
             <div className="duration-header-text">{translate("duration-header")}</div>
-            {isExpanded ? <SortingList onSelect={onSortSelected} /> : null}
+            {onSortSelected ? <SortingList onSelect={onSortSelected} /> : null}
         </div>
     );
 };
