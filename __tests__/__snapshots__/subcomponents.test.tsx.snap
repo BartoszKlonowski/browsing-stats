@@ -94,14 +94,10 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button-container"
+            className="expanded-view-tile-details-navigation-button"
+            onClick={[Function]}
           >
-            <div
-              className="expanded-view-tile-details-navigation-button"
-              onClick={[Function]}
-            >
-              Details
-            </div>
+            Details
           </div>
         </div>
       </li>
@@ -143,14 +139,10 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button-container"
+            className="expanded-view-tile-details-navigation-button"
+            onClick={[Function]}
           >
-            <div
-              className="expanded-view-tile-details-navigation-button"
-              onClick={[Function]}
-            >
-              Details
-            </div>
+            Details
           </div>
         </div>
       </li>
@@ -192,14 +184,10 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button-container"
+            className="expanded-view-tile-details-navigation-button"
+            onClick={[Function]}
           >
-            <div
-              className="expanded-view-tile-details-navigation-button"
-              onClick={[Function]}
-            >
-              Details
-            </div>
+            Details
           </div>
         </div>
       </li>
@@ -241,14 +229,10 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button-container"
+            className="expanded-view-tile-details-navigation-button"
+            onClick={[Function]}
           >
-            <div
-              className="expanded-view-tile-details-navigation-button"
-              onClick={[Function]}
-            >
-              Details
-            </div>
+            Details
           </div>
         </div>
       </li>
@@ -290,14 +274,10 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button-container"
+            className="expanded-view-tile-details-navigation-button"
+            onClick={[Function]}
           >
-            <div
-              className="expanded-view-tile-details-navigation-button"
-              onClick={[Function]}
-            >
-              Details
-            </div>
+            Details
           </div>
         </div>
       </li>

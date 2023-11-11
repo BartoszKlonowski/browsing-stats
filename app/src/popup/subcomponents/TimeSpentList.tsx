@@ -39,14 +39,12 @@ export const TimeSpentList = ({sorted, onEnterClick}: Props) => {
                         {getHours(timeSpentInSeconds)}:{getMinutes(timeSpentInSeconds)}:{getSeconds(timeSpentInSeconds)}
                     </div>
                 </div>
-                <div className="expanded-view-tile-details-navigation-button-container">
-                    <div
-                        className="expanded-view-tile-details-navigation-button"
-                        onClick={() => {
-                            onEnterClick(domain);
-                        }}>
-                        {translate("details-button-label")}
-                    </div>
+                <div
+                    className="expanded-view-tile-details-navigation-button"
+                    onClick={() => {
+                        onEnterClick(domain);
+                    }}>
+                    {translate("details-button-label")}
                 </div>
             </div>
         );
