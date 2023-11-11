@@ -16,7 +16,7 @@ export const ExpandedView = ({sorted, setSortingOrder}: Props) => {
         <>
             {!detailsScreenWebsite ? <DurationHeader onSortSelected={setSortingOrder} /> : null}
             {detailsScreenWebsite ? (
-                <DetailsView website={detailsScreenWebsite} />
+                <DetailsView website={detailsScreenWebsite} onBackButtonClick={() => setDetailsScreenWebsite(null)} />
             ) : (
                 <div className="expanded-view-list-container">
                     <TimeSpentList sorted={sorted} onEnterClick={(domain) => setDetailsScreenWebsite(domain)} />
