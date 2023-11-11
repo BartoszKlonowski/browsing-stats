@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DetailsView renders correctly according to snapshot 1`] = `<div />`;
+exports[`DetailsView renders correctly according to snapshot 1`] = `
+<div
+  className="details-view-container"
+>
+  <div
+    className="details-view-website-title"
+  />
+  <div
+    className="details-view-back-button"
+    onClick={[Function]}
+  >
+    Go back
+  </div>
+</div>
+`;
 
 exports[`ExpandedView renders correctly according to snapshot 1`] = `
 Array [

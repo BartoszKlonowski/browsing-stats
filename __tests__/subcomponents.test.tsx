@@ -1,5 +1,6 @@
 import React from "react";
 import TestRenderer, {act, ReactTestInstance, ReactTestRenderer} from "react-test-renderer";
+import {fireEvent, render, screen} from "@testing-library/react";
 import ShrinkedView from "../app/src/popup/subcomponents/ShrinkedView";
 import ExpandedView from "../app/src/popup/subcomponents/ExpandedView";
 import ViewChangeButton from "../app/src/popup/subcomponents/ViewChangeButton";
@@ -166,7 +167,6 @@ describe("ExpandedView", () => {
 
 describe("ViewChangeButton", () => {
     it("renders correctly regarding the snapshot", () => {
-        global.browser.i18n.getUILanguage = () => "EN";
         const button = renderElement(
             <ViewChangeButton
                 isExpanded={false}
@@ -179,7 +179,6 @@ describe("ViewChangeButton", () => {
     });
 
     it("is created by a button type", async () => {
-        global.browser.i18n.getUILanguage = () => "EN";
         const button = await renderElementAsObject(
             <ViewChangeButton
                 isExpanded={false}
@@ -205,7 +204,6 @@ describe("Sorting", () => {
     });
 
     it("initially renders with the option 'None'", async () => {
-        global.browser.i18n.getUILanguage = () => "EN";
         const sortList = await renderElementAsObject(
             <SortingList
                 onSelect={(_: Sort): void => {
@@ -217,7 +215,6 @@ describe("Sorting", () => {
     });
 
     it("does not render the list when not clicked", async () => {
-        global.browser.i18n.getUILanguage = () => "EN";
         const sortList = await renderElementAsObject(
             <SortingList
                 onSelect={(_: Sort): void => {
@@ -229,7 +226,6 @@ describe("Sorting", () => {
     });
 
     it("renders the complete list when clicked", async () => {
-        global.browser.i18n.getUILanguage = () => "EN";
         const sortList = await renderElementAsObject(
             <SortingList
                 onSelect={(_: Sort): void => {
@@ -243,7 +239,22 @@ describe("Sorting", () => {
 
 describe("DetailsView", () => {
     it("renders correctly according to snapshot", () => {
-        const detailsView = renderElement(<DetailsView website={""} />);
+        const detailsView = renderElement(<DetailsView website={""} onBackButtonClick={() => undefined} />);
         expect(detailsView).toMatchSnapshot();
+    });
+
+    it("contains the back button for back navigation", async () => {
+        const detailsView = await renderElementAsObject(
+            <DetailsView website="test" onBackButtonClick={() => undefined} />
+        );
+        expect(getChild(detailsView, 1).props.className).toBe("details-view-back-button");
+    });
+
+    it("calls the onBackButton handler when back button is clicked", async () => {
+        const mockedBackButtonHandler = jest.fn();
+        render(<DetailsView website="test" onBackButtonClick={mockedBackButtonHandler} />);
+        const backButton = screen.getByText("Go back");
+        fireEvent.click(backButton);
+        expect(mockedBackButtonHandler).toBeCalled();
     });
 });
