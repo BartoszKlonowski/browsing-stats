@@ -9,5 +9,6 @@
     "option-timedescending": "Zeit: Absteigend",
     "option-none": "Keine",
     "details-button-label": "Einzelheiten",
-    "details-view-back-button-label": "Zurück"
+    "details-view-back-button-label": "Zurück",
+    "details-view-last-visited-label": "Letzter Besuch"
 }

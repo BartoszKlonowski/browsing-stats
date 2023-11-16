@@ -9,5 +9,6 @@
     "option-timedescending": "Heure: Décroissante",
     "option-none": "Aucun",
     "details-button-label": "Détails",
-    "details-view-back-button-label": "Retourner"
+    "details-view-back-button-label": "Retourner",
+    "details-view-last-visited-label": "Derniere visite"
 }
