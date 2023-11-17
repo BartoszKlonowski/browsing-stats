@@ -240,7 +240,10 @@ describe("Sorting", () => {
 
 describe("DetailsView", () => {
     it("renders correctly according to snapshot", () => {
-        const detailsView = renderElement(<DetailsView website={""} onBackButtonClick={() => undefined} />);
+        global._localStorage.getItem = (key: string) => {
+            return `[["test", "invalid-mocked-date"],["${key}", "${new Date(0)}"]]`;
+        };
+        const detailsView = renderElement(<DetailsView website={"test"} onBackButtonClick={() => undefined} />);
         expect(detailsView).toMatchSnapshot();
     });
 

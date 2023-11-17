@@ -6,7 +6,9 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
 >
   <div
     className="details-view-website-title"
-  />
+  >
+    test
+  </div>
   <div
     className="details-view-details-table"
   >
@@ -18,7 +20,7 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
     <div
       className="details-view-last-visited-value"
     >
-      17.11.2023, 01:26:29
+      Invalid Date
     </div>
   </div>
   <div
