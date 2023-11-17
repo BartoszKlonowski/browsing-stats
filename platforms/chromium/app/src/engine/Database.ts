@@ -123,6 +123,59 @@ class Database {
             onReturn(new Date());
         }
     }
+
+    writeLastVisited(domain: string, date: Date) {
+        try {
+            browser.storage.local
+                .get("lastVisited")
+                .then((lastVisitedObject) => {
+                    if (lastVisitedObject && Object.keys(lastVisitedObject).length) {
+                        const content = new Map<string, Date>(Object.values(lastVisitedObject.lastVisited));
+                        content.set(domain, date);
+                        browser.storage.local
+                            .set(JSON.parse(`{"lastVisited":${JSON.stringify(Array.from(content.entries()))}}`))
+                            .catch((error) => {
+                                console.error("browser.storage.local.set.error: ", error);
+                            });
+                    } else {
+                        browser.storage.local
+                            .set(
+                                JSON.parse(
+                                    `{"lastVisited":${JSON.stringify(
+                                        Array.from(new Map<string, Date>([[domain, date]]).entries())
+                                    )}}`
+                                )
+                            )
+                            .catch((error) => {
+                                console.error("browser.storage.local.set.error: ", error);
+                            });
+                    }
+                })
+                .catch((error) => {
+                    console.error("writeLastVisited.ERROR:", error);
+                });
+        } catch (exception) {
+            console.error(`ERROR: `, exception);
+        }
+    }
+
+    readLastVisited(domain: string, onReturn: (date: Date) => void) {
+        if (domain.length === 0) {
+            return;
+        }
+        try {
+            browser.storage.local.get("lastVisited").then((content) => {
+                const lastVisitedMap =
+                    content && Object.keys(content).length
+                        ? new Map<string, Date>(Object.values(content.lastVisited))
+                        : new Map<string, Date>([]);
+                onReturn(new Date(lastVisitedMap.get(domain) || new Date()));
+            });
+        } catch (exception) {
+            console.error("ERROR: ", exception);
+            onReturn(new Date());
+        }
+    }
 }
 
 export default Database;

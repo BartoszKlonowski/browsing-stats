@@ -173,6 +173,35 @@
   padding: 5px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: medium;
+  font-weight: bold;
+  color: #FC4D17;
+}
+.details-view-details-table {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.details-view-last-visited-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom-style: ridge;
+  border-bottom-width: 1px;
+  border-bottom-color: #FC4D17;
+}
+.details-view-last-visited-label {
+  padding: 5px;
+  justify-items: flex-end;
+  justify-self: flex-end;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: medium;
+}
+.details-view-last-visited-value {
+  padding: 5px;
+  font-weight: bold;
+  font-size: medium;
 }
 .details-view-back-button {
   font-family: Georgia, 'Times New Roman', Times, serif;

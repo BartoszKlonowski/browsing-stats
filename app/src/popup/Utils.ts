@@ -53,6 +53,7 @@ export function storeTimeSpentSummary(currentDomain: string) {
         if (!!currentDomain.length && domain !== currentDomain) {
             db.writePreviousDomain(currentDomain);
             db.writeLastActive(currentDomain, new Date());
+            db.writeLastVisited(domain, new Date());
             calculateTimeSpentForDomain(domain);
         }
     });

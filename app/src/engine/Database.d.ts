@@ -10,4 +10,8 @@ export default class Database {
     writeLastActive(domain: string, date: Date): void;
 
     readLastActive(domain: string, onReturn: (date: Date) => void): void;
+
+    writeLastVisited(domain: string, date: Date): void;
+
+    readLastVisited(domain: string, onReturn: (date: Date) => void): void;
 }
