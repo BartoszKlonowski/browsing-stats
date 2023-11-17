@@ -101,6 +101,38 @@ class Database {
             onReturn(new Date());
         }
     }
+
+    readLastVisited(domain: string, onReturn: (date: Date) => void): void {
+        try {
+            const lastVisitedObject = this.storage.getItem("lastVisited");
+            const lastVisitedMap =
+                lastVisitedObject && lastVisitedObject !== "{}"
+                    ? new Map<string, Date>(JSON.parse(lastVisitedObject))
+                    : new Map<string, Date>([]);
+            onReturn(new Date(lastVisitedMap.get(domain) || new Date()));
+        } catch (exception) {
+            console.error("readLastVisited.error", exception);
+            onReturn(new Date());
+        }
+    }
+
+    writeLastVisited(domain: string, date: Date): void {
+        try {
+            const lastVisitedObject = this.storage.getItem("lastVisited");
+            if (lastVisitedObject && lastVisitedObject.length && lastVisitedObject !== "{}") {
+                const lastVisitedMap = new Map<string, Date>(JSON.parse(lastVisitedObject));
+                lastVisitedMap.set(domain, date);
+                this.storage.setItem("lastVisited", JSON.stringify(Array.from(lastVisitedMap.entries())));
+            } else {
+                this.storage.setItem(
+                    "lastVisited",
+                    JSON.stringify(Array.from(new Map<string, Date>([[domain, date]]).entries()))
+                );
+            }
+        } catch (error) {
+            console.error("writeLastVisited.error: ", error);
+        }
+    }
 }
 
 export default Database;
