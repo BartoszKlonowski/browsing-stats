@@ -8,6 +8,20 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
     className="details-view-website-title"
   />
   <div
+    className="details-view-details-table"
+  >
+    <div
+      className="details-view-last-visited-label"
+    >
+      Last visit
+    </div>
+    <div
+      className="details-view-last-visited-value"
+    >
+      17.11.2023, 01:26:29
+    </div>
+  </div>
+  <div
     className="details-view-back-button"
     onClick={[Function]}
   >

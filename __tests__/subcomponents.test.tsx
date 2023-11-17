@@ -7,6 +7,7 @@ import ViewChangeButton from "../app/src/popup/subcomponents/ViewChangeButton";
 import SortingList from "../app/src/popup/subcomponents/SortingList";
 import DetailsView from "../app/src/popup/subcomponents/DetailsView";
 import {Sort} from "../app/src/popup/Utils";
+import {translate} from "../app/src/engine/i18n";
 
 function renderElement(element: JSX.Element): ReactTestRenderer {
     const component = TestRenderer.create(element);
@@ -247,7 +248,7 @@ describe("DetailsView", () => {
         const detailsView = await renderElementAsObject(
             <DetailsView website="test" onBackButtonClick={() => undefined} />
         );
-        expect(getChild(detailsView, 1).props.className).toBe("details-view-back-button");
+        expect(getChild(detailsView, 2).props.className).toBe("details-view-back-button");
     });
 
     it("calls the onBackButton handler when back button is clicked", async () => {
@@ -256,5 +257,17 @@ describe("DetailsView", () => {
         const backButton = screen.getByText("Go back");
         fireEvent.click(backButton);
         expect(mockedBackButtonHandler).toBeCalled();
+    });
+
+    it("contains the last visited with proper label and value matching storage state", async () => {
+        const currentDate = new Date();
+        global._localStorage.getItem = (key: string) => {
+            return `[["${key}", "${currentDate}"],["second.domain", "${currentDate}"]]`;
+        };
+        render(<DetailsView website="test" onBackButtonClick={() => undefined} />);
+        const lastVisitedLabel = await screen.findByText(translate("details-view-last-visited-label"));
+        const lastVisitedValue = await screen.findByText(currentDate.toLocaleString());
+        expect(lastVisitedLabel?.textContent).toBe(translate("details-view-last-visited-label"));
+        expect(lastVisitedValue?.textContent).toBe(currentDate.toLocaleString());
     });
 });
