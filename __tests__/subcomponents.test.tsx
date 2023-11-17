@@ -264,13 +264,14 @@ describe("DetailsView", () => {
 
     it("contains the last visited with proper label and value matching storage state", async () => {
         const currentDate = new Date();
+        global._localStorage.setItem = jest.fn();
         global._localStorage.getItem = (key: string) => {
             return `[["${key}", "${currentDate}"],["second.domain", "${currentDate}"]]`;
         };
         render(<DetailsView website="test" onBackButtonClick={() => undefined} />);
-        const lastVisitedLabel = await screen.findByText(translate("details-view-last-visited-label"));
+        const lastVisitedLabel = await screen.findByText(`${translate("details-view-last-visited-label")}:`);
         const lastVisitedValue = await screen.findByText(currentDate.toLocaleString());
-        expect(lastVisitedLabel?.textContent).toBe(translate("details-view-last-visited-label"));
+        expect(lastVisitedLabel?.textContent).toBe(`${translate("details-view-last-visited-label")}:`);
         expect(lastVisitedValue?.textContent).toBe(currentDate.toLocaleString());
     });
 });

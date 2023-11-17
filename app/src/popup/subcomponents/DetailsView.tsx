@@ -21,8 +21,12 @@ const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => 
         <div className="details-view-container">
             <div className="details-view-website-title">{website}</div>
             <div className="details-view-details-table">
-                <div className="details-view-last-visited-label">{translate("details-view-last-visited-label")}</div>
-                <div className="details-view-last-visited-value">{lastVisited}</div>
+                <div className="details-view-last-visited-row">
+                    <div className="details-view-last-visited-label">{`${translate(
+                        "details-view-last-visited-label"
+                    )}:`}</div>
+                    <div className="details-view-last-visited-value">{lastVisited}</div>
+                </div>
             </div>
             <div className="details-view-back-button" onClick={onBackButtonClick}>
                 {translate("details-view-back-button-label")}
