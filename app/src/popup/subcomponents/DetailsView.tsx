@@ -17,16 +17,18 @@ const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => 
         });
     }, []);
 
+    const details = [{detail: translate("details-view-last-visited-label"), value: lastVisited}];
+
     return (
         <div className="details-view-container">
             <div className="details-view-website-title">{website}</div>
             <div className="details-view-details-table">
-                <div className="details-view-last-visited-row">
-                    <div className="details-view-last-visited-label">{`${translate(
-                        "details-view-last-visited-label"
-                    )}:`}</div>
-                    <div className="details-view-last-visited-value">{lastVisited}</div>
-                </div>
+                {details.map((row) => (
+                    <div className="details-view-table-row" key={row.detail}>
+                        <div className="details-view-table-label">{`${row.detail}:`}</div>
+                        <div className="details-view-table-value">{row.value}</div>
+                    </div>
+                ))}
             </div>
             <div className="details-view-back-button" onClick={onBackButtonClick}>
                 {translate("details-view-back-button-label")}

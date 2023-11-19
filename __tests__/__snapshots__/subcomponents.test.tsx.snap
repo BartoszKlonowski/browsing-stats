@@ -13,15 +13,15 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
     className="details-view-details-table"
   >
     <div
-      className="details-view-last-visited-row"
+      className="details-view-table-row"
     >
       <div
-        className="details-view-last-visited-label"
+        className="details-view-table-label"
       >
         Last visit:
       </div>
       <div
-        className="details-view-last-visited-value"
+        className="details-view-table-value"
       >
         Invalid Date
       </div>
