@@ -18,6 +18,20 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
       <div
         className="details-view-table-label"
       >
+        Spent here:
+      </div>
+      <div
+        className="details-view-table-value"
+      >
+        NaN:00:NaN
+      </div>
+    </div>
+    <div
+      className="details-view-table-row"
+    >
+      <div
+        className="details-view-table-label"
+      >
         Last visit:
       </div>
       <div

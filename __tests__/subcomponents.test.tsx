@@ -274,4 +274,16 @@ describe("DetailsView", () => {
         expect(lastVisitedLabel?.textContent).toBe(`${translate("details-view-last-visited-label")}:`);
         expect(lastVisitedValue?.textContent).toBe(currentDate.toLocaleString());
     });
+
+    it("contains the time spent summary with proper label and value matching storage state", async () => {
+        global._localStorage.setItem = jest.fn();
+        global._localStorage.getItem = (key: string) => {
+            return `[["${key}", "120"],["test", "243"]]`;
+        };
+        render(<DetailsView website="test" onBackButtonClick={() => undefined} />);
+        const timeSpentLabel = await screen.findByText(`${translate("duration-header")}:`);
+        const timeSpentValue = await screen.findByText("0:04:03");
+        expect(timeSpentLabel?.textContent).toBe(`${translate("duration-header")}:`);
+        expect(timeSpentValue?.textContent).toBe("0:04:03");
+    });
 });
