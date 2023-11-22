@@ -1,6 +1,7 @@
 import React, {useMemo, useState} from "react";
 import Database from "../../engine/Database";
 import {translate} from "../../engine/i18n";
+import {getHours, getMinutes, getSeconds} from "../Utils";
 
 interface Props {
     website: string;
@@ -9,15 +10,23 @@ interface Props {
 
 const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => {
     const [lastVisited, setLastVisited] = useState<string>("...");
+    const [timeSpent, setTimeSpent] = useState<string>("...");
     const db = new Database();
 
     useMemo(() => {
         db.readLastVisited(website, (date) => {
             setLastVisited(date.toLocaleString());
         });
+        db.readTimeSpent((result) => {
+            const timeInSeconds = result as number;
+            setTimeSpent(`${getHours(timeInSeconds)}:${getMinutes(timeInSeconds)}:${getSeconds(timeInSeconds)}`);
+        }, website);
     }, []);
 
-    const details = [{detail: translate("details-view-last-visited-label"), value: lastVisited}];
+    const details = [
+        {detail: translate("duration-header"), value: timeSpent},
+        {detail: translate("details-view-last-visited-label"), value: lastVisited},
+    ];
 
     return (
         <div className="details-view-container">
