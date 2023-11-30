@@ -1,3 +1,9 @@
+export interface Website {
+    lastVisited: Date;
+    lastActive: Date;
+    timeSpent: number;
+}
+
 export default class Database {
     writeTimeSpent(domain: string, timeSpentInSeconds: number): void;
 
