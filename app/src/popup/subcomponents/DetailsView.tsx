@@ -11,6 +11,7 @@ interface Props {
 const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => {
     const [lastVisited, setLastVisited] = useState<string>("...");
     const [timeSpent, setTimeSpent] = useState<string>("...");
+    const [numberOfVisits, setNumberOfVisits] = useState<number>(0);
     const db = new Database();
 
     useMemo(() => {
@@ -21,11 +22,13 @@ const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => 
             const timeInSeconds = result as number;
             setTimeSpent(`${getHours(timeInSeconds)}:${getMinutes(timeInSeconds)}:${getSeconds(timeInSeconds)}`);
         }, website);
+        db.readNumberOfVisits(website, (number) => setNumberOfVisits(number));
     }, []);
 
     const details = [
         {detail: translate("duration-header"), value: timeSpent},
         {detail: translate("details-view-last-visited-label"), value: lastVisited},
+        {detail: translate("details-view-number-of-visits"), value: numberOfVisits},
     ];
 
     return (

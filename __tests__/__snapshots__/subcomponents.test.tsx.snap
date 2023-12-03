@@ -40,6 +40,20 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
         Invalid Date
       </div>
     </div>
+    <div
+      className="details-view-table-row"
+    >
+      <div
+        className="details-view-table-label"
+      >
+        Total visits:
+      </div>
+      <div
+        className="details-view-table-value"
+      >
+        invalid-mocked-date
+      </div>
+    </div>
   </div>
   <div
     className="details-view-back-button"

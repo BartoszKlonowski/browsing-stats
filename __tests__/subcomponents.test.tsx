@@ -286,4 +286,16 @@ describe("DetailsView", () => {
         expect(timeSpentLabel?.textContent).toBe(`${translate("duration-header")}:`);
         expect(timeSpentValue?.textContent).toBe("0:04:03");
     });
+
+    it("contains the total number of visits with proper label and value matching storage state", async () => {
+        global._localStorage.setItem = jest.fn();
+        global._localStorage.getItem = (key: string) => {
+            return `[["${key}", "120"],["test", "24"]]`;
+        };
+        render(<DetailsView website="test" onBackButtonClick={() => undefined} />);
+        const totalNumberLabel = await screen.findByText(`${translate("details-view-number-of-visits")}:`);
+        const totalNumberValue = await screen.findByText("24");
+        expect(totalNumberLabel?.textContent).toBe(`${translate("details-view-number-of-visits")}:`);
+        expect(totalNumberValue?.textContent).toBe("24");
+    });
 });
