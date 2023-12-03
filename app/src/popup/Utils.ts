@@ -59,6 +59,20 @@ export function storeTimeSpentSummary(currentDomain: string) {
     });
 }
 
+export function storeVisitsNumber(domain: string | null) {
+    if (!domain) {
+        return;
+    }
+    const db = new Database();
+    db.readPreviousDomain((previousDomain) => {
+        if (previousDomain !== domain) {
+            db.readNumberOfVisits(domain, (numberOfVisits) => {
+                db.writeNumberOfVisits(domain, numberOfVisits + 1);
+            });
+        }
+    });
+}
+
 export const sortDataEntries = (data: Map<string, number>, sortMethod: Sort) => {
     return new Map(
         [...data].sort((entry1: [string, number], entry2: [string, number]) => {

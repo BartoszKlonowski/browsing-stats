@@ -1,3 +1,4 @@
+import Database from "../app/src/engine/Database";
 import {
     getActiveTabDomainFromURL,
     getWebsiteIconObject,
@@ -7,6 +8,7 @@ import {
     optionEventValueToSortEnum,
     Sort,
     sortDataEntries,
+    storeVisitsNumber,
 } from "../app/src/popup/Utils";
 
 describe("getActiveTabDomainFromURL", () => {
@@ -73,6 +75,27 @@ describe("getWebsiteIconObject", () => {
             size: 20,
             src: "../resources/missing-website-favicon.png",
         });
+    });
+});
+
+describe("storeVisitsNumber", () => {
+    it("does not modify storage if domain is incorrect", () => {
+        const db = new Database();
+        const dbMockSpy = jest.spyOn(db, "readPreviousDomain");
+        storeVisitsNumber(null);
+        expect(dbMockSpy).not.toBeCalled();
+    });
+    it("reads previous domain from storage if domain is correct", () => {
+        global._localStorage.setItem = jest.fn();
+        const dbMockSpy = jest.spyOn(global._localStorage, "getItem");
+        storeVisitsNumber("some.website");
+        expect(dbMockSpy).toBeCalled();
+    });
+    it("saves given visits number to storage if domain is correct", () => {
+        global._localStorage.setItem = jest.fn();
+        const dbMockSpy = jest.spyOn(global._localStorage, "setItem");
+        storeVisitsNumber("some.website");
+        expect(dbMockSpy).toBeCalled();
     });
 });
 
