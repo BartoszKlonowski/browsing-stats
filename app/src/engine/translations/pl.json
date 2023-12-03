@@ -10,5 +10,6 @@
     "option-none": "Brak",
     "details-button-label": "Szczegóły",
     "details-view-back-button-label": "Wróć",
-    "details-view-last-visited-label": "Ostatnia wizyta"
+    "details-view-last-visited-label": "Ostatnia wizyta",
+    "details-view-number-of-visits": "Łącznie wizyt"
 }

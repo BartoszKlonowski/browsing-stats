@@ -10,5 +10,6 @@
     "option-none": "Aucun",
     "details-button-label": "Détails",
     "details-view-back-button-label": "Retourner",
-    "details-view-last-visited-label": "Derniere visite"
+    "details-view-last-visited-label": "Derniere visite",
+    "details-view-number-of-visits": "Visites totales"
 }

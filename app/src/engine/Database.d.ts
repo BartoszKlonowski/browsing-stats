@@ -14,4 +14,8 @@ export default class Database {
     writeLastVisited(domain: string, date: Date): void;
 
     readLastVisited(domain: string, onReturn: (date: Date) => void): void;
+
+    writeNumberOfVisits(domain: string, visitsNumber: number): void;
+
+    readNumberOfVisits(domain: string, onReturn: (visitsNumber: number) => void): void;
 }
