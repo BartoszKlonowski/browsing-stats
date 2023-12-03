@@ -133,6 +133,38 @@ class Database {
             console.error("writeLastVisited.error: ", error);
         }
     }
+
+    readNumberOfVisits(domain: string, onReturn: (visitsNumber: number) => void): void {
+        try {
+            const visitsNumberObject = this.storage.getItem("visitsNumber");
+            const visitsNumberMap =
+                visitsNumberObject && visitsNumberObject !== "{}"
+                    ? new Map<string, number>(JSON.parse(visitsNumberObject))
+                    : new Map<string, number>([]);
+            onReturn(visitsNumberMap.get(domain) || 0);
+        } catch (exception) {
+            console.error("readNumberOfVisits.error", exception);
+            onReturn(0);
+        }
+    }
+
+    writeNumberOfVisits(domain: string, visitsNumber: number): void {
+        try {
+            const visitsNumberObject = this.storage.getItem("visitsNumber");
+            if (visitsNumberObject && visitsNumberObject.length && visitsNumberObject !== "{}") {
+                const visitsNumberMap = new Map<string, number>(JSON.parse(visitsNumberObject));
+                visitsNumberMap.set(domain, visitsNumber);
+                this.storage.setItem("visitsNumber", JSON.stringify(Array.from(visitsNumberMap.entries())));
+            } else {
+                this.storage.setItem(
+                    "visitsNumber",
+                    JSON.stringify(Array.from(new Map<string, number>([[domain, visitsNumber]]).entries()))
+                );
+            }
+        } catch (error) {
+            console.error("writeNumberOfVisits.error: ", error);
+        }
+    }
 }
 
 export default Database;

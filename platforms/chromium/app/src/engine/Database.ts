@@ -176,6 +176,62 @@ class Database {
             onReturn(new Date());
         }
     }
+
+    writeNumberOfVisits(domain: string, visitsNumber: number): void {
+        if (!domain.length) {
+            return;
+        }
+        try {
+            browser.storage.local
+                .get("visitsNumber")
+                .then((visitsNumberObject) => {
+                    if (visitsNumberObject && Object.keys(visitsNumberObject).length) {
+                        const content = new Map<string, number>(Object.values(visitsNumberObject.visitsNumber));
+                        content.set(domain, visitsNumber);
+                        browser.storage.local
+                            .set(JSON.parse(`{"visitsNumber":${JSON.stringify(Array.from(content.entries()))}}`))
+                            .catch((error) => {
+                                console.error("browser.storage.local.set.error: ", error);
+                            });
+                    } else {
+                        browser.storage.local
+                            .set(
+                                JSON.parse(
+                                    `{"visitsNumber":${JSON.stringify(
+                                        Array.from(new Map<string, number>([[domain, visitsNumber]]).entries())
+                                    )}}`
+                                )
+                            )
+                            .catch((error) => {
+                                console.error("browser.storage.local.set.error: ", error);
+                            });
+                    }
+                })
+                .catch((error) => {
+                    console.error("writeNumberOfVisits.ERROR:", error);
+                });
+        } catch (exception) {
+            console.error(`ERROR: `, exception);
+        }
+    }
+
+    readNumberOfVisits(domain: string, onReturn: (visitsNumber: number) => void) {
+        if (domain.length === 0) {
+            return;
+        }
+        try {
+            browser.storage.local.get("visitsNumber").then((content) => {
+                const numberOfVisitsMap =
+                    content && Object.keys(content).length
+                        ? new Map<string, number>(Object.values(content.visitsNumber))
+                        : new Map<string, number>([]);
+                onReturn(numberOfVisitsMap.get(domain) || 0);
+            });
+        } catch (exception) {
+            console.error("ERROR: ", exception);
+            onReturn(0);
+        }
+    }
 }
 
 export default Database;
