@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button renders correctly regarding the snapshot 1`] = `
+<button
+  className="button"
+  itemType="button"
+  onClick={[Function]}
+>
+  <div
+    className="button-text"
+  >
+    test
+  </div>
+</button>
+`;
+
 exports[`DetailsView renders correctly according to snapshot 1`] = `
 <div
   className="details-view-container"
@@ -56,7 +70,7 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
     </div>
   </div>
   <div
-    className="details-view-back-button"
+    className="button"
     onClick={[Function]}
   >
     Go back
@@ -142,7 +156,7 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button"
+            className="button"
             onClick={[Function]}
           >
             Details
@@ -187,7 +201,7 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button"
+            className="button"
             onClick={[Function]}
           >
             Details
@@ -232,7 +246,7 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button"
+            className="button"
             onClick={[Function]}
           >
             Details
@@ -277,7 +291,7 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button"
+            className="button"
             onClick={[Function]}
           >
             Details
@@ -322,7 +336,7 @@ Array [
             </div>
           </div>
           <div
-            className="expanded-view-tile-details-navigation-button"
+            className="button"
             onClick={[Function]}
           >
             Details
@@ -399,18 +413,4 @@ exports[`Sorting renders correctly according to snapshot 1`] = `
     </div>
   </div>
 </div>
-`;
-
-exports[`ViewChangeButton renders correctly regarding the snapshot 1`] = `
-<button
-  className="view-change-button"
-  itemType="button"
-  onClick={[Function]}
->
-  <div
-    className="view-change-button-text"
-  >
-    More
-  </div>
-</button>
 `;
