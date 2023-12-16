@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button renders correctly regarding the snapshot 1`] = `
+<button
+  className="button"
+  itemType="button"
+  onClick={[Function]}
+>
+  <div
+    className="button-text"
+  />
+</button>
+`;
+
 exports[`DetailsView renders correctly according to snapshot 1`] = `
 <div
   className="details-view-container"
@@ -55,12 +67,17 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="details-view-back-button"
+  <button
+    className="button"
+    itemType="button"
     onClick={[Function]}
   >
-    Go back
-  </div>
+    <div
+      className="button-text"
+    >
+      Go back
+    </div>
+  </button>
 </div>
 `;
 
@@ -141,12 +158,17 @@ Array [
               13
             </div>
           </div>
-          <div
-            className="expanded-view-tile-details-navigation-button"
+          <button
+            className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
       <li>
@@ -186,12 +208,17 @@ Array [
               14
             </div>
           </div>
-          <div
-            className="expanded-view-tile-details-navigation-button"
+          <button
+            className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
       <li>
@@ -231,12 +258,17 @@ Array [
               07
             </div>
           </div>
-          <div
-            className="expanded-view-tile-details-navigation-button"
+          <button
+            className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
       <li>
@@ -276,12 +308,17 @@ Array [
               07
             </div>
           </div>
-          <div
-            className="expanded-view-tile-details-navigation-button"
+          <button
+            className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
       <li>
@@ -321,12 +358,17 @@ Array [
               05
             </div>
           </div>
-          <div
-            className="expanded-view-tile-details-navigation-button"
+          <button
+            className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
     </ul>
@@ -399,18 +441,4 @@ exports[`Sorting renders correctly according to snapshot 1`] = `
     </div>
   </div>
 </div>
-`;
-
-exports[`ViewChangeButton renders correctly regarding the snapshot 1`] = `
-<button
-  className="view-change-button"
-  itemType="button"
-  onClick={[Function]}
->
-  <div
-    className="view-change-button-text"
-  >
-    More
-  </div>
-</button>
 `;

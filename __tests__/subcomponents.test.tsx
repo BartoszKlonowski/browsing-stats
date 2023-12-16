@@ -3,7 +3,7 @@ import TestRenderer, {act, ReactTestInstance, ReactTestRenderer} from "react-tes
 import {fireEvent, render, screen} from "@testing-library/react";
 import ShrinkedView from "../app/src/popup/subcomponents/ShrinkedView";
 import ExpandedView from "../app/src/popup/subcomponents/ExpandedView";
-import ViewChangeButton from "../app/src/popup/subcomponents/ViewChangeButton";
+import Button from "../app/src/popup/subcomponents/Button";
 import SortingList from "../app/src/popup/subcomponents/SortingList";
 import DetailsView from "../app/src/popup/subcomponents/DetailsView";
 import {Sort} from "../app/src/popup/Utils";
@@ -166,13 +166,13 @@ describe("ExpandedView", () => {
     });
 });
 
-describe("ViewChangeButton", () => {
+describe("Button", () => {
     it("renders correctly regarding the snapshot", () => {
         const button = renderElement(
-            <ViewChangeButton
-                isExpanded={false}
-                onClick={(_: boolean) => {
-                    _;
+            <Button
+                label={"test"}
+                onClick={() => {
+                    "unused";
                 }}
             />
         );
@@ -181,14 +181,22 @@ describe("ViewChangeButton", () => {
 
     it("is created by a button type", async () => {
         const button = await renderElementAsObject(
-            <ViewChangeButton
-                isExpanded={false}
-                onClick={(_) => {
-                    _;
+            <Button
+                label={"test"}
+                onClick={() => {
+                    "unused";
                 }}
             />
         );
         expect(button.type).toBe("button");
+    });
+
+    it("executes the onClick function when clicked", async () => {
+        const mockedOnClick = jest.fn();
+        render(<Button label={"test"} onClick={mockedOnClick} />);
+        const button = screen.getByRole("button");
+        fireEvent.click(button);
+        expect(mockedOnClick).toBeCalled();
     });
 });
 
@@ -251,7 +259,7 @@ describe("DetailsView", () => {
         const detailsView = await renderElementAsObject(
             <DetailsView website="test" onBackButtonClick={() => undefined} />
         );
-        expect(getChild(detailsView, 2).props.className).toBe("details-view-back-button");
+        expect(getChild(detailsView, 2).props.className).toBe("button");
     });
 
     it("calls the onBackButton handler when back button is clicked", async () => {
