@@ -8,9 +8,7 @@ exports[`Button renders correctly regarding the snapshot 1`] = `
 >
   <div
     className="button-text"
-  >
-    test
-  </div>
+  />
 </button>
 `;
 
@@ -69,12 +67,17 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div
+  <button
     className="button"
+    itemType="button"
     onClick={[Function]}
   >
-    Go back
-  </div>
+    <div
+      className="button-text"
+    >
+      Go back
+    </div>
+  </button>
 </div>
 `;
 
@@ -155,12 +158,17 @@ Array [
               13
             </div>
           </div>
-          <div
+          <button
             className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
       <li>
@@ -200,12 +208,17 @@ Array [
               14
             </div>
           </div>
-          <div
+          <button
             className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
       <li>
@@ -245,12 +258,17 @@ Array [
               07
             </div>
           </div>
-          <div
+          <button
             className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
       <li>
@@ -290,12 +308,17 @@ Array [
               07
             </div>
           </div>
-          <div
+          <button
             className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
       <li>
@@ -335,12 +358,17 @@ Array [
               05
             </div>
           </div>
-          <div
+          <button
             className="button"
+            itemType="button"
             onClick={[Function]}
           >
-            Details
-          </div>
+            <div
+              className="button-text"
+            >
+              Details
+            </div>
+          </button>
         </div>
       </li>
     </ul>

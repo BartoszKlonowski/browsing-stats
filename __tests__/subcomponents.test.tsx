@@ -171,7 +171,9 @@ describe("Button", () => {
         const button = renderElement(
             <Button
                 label={"test"}
-                onClick={() => {}}
+                onClick={() => {
+                    "unused";
+                }}
             />
         );
         expect(button).toMatchSnapshot();
@@ -181,10 +183,20 @@ describe("Button", () => {
         const button = await renderElementAsObject(
             <Button
                 label={"test"}
-                onClick={() => {}}
+                onClick={() => {
+                    "unused";
+                }}
             />
         );
         expect(button.type).toBe("button");
+    });
+
+    it("executes the onClick function when clicked", async () => {
+        const mockedOnClick = jest.fn();
+        render(<Button label={"test"} onClick={mockedOnClick} />);
+        const button = screen.getByRole("button");
+        fireEvent.click(button);
+        expect(mockedOnClick).toBeCalled();
     });
 });
 
