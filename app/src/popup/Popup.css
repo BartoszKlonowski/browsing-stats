@@ -1,22 +1,28 @@
 .popup-view {
-  border: 5px solid #00e080;
-  background-color: #F2F2F2;
+  border: 2px solid #00e080;
+  background-image: linear-gradient(0.35turn, #E0E0E0, transparent);
   align-content: space-around;
   padding: 2px;
 }
-.view-change-button {
+.button {
   display: flex;
-  padding: 3px;
-  border: 3px solid #FC4D17;
-  border-radius: 10px;
+  margin: 3px;
+  border: 2px solid #FC4D17;
+  border-radius: 5px;
   flex-direction: row;
   justify-items: center;
   justify-content: center;
 }
-.view-change-button-text {
+.button:hover {
+  background-color: #FA6F3F;
+  transition: .2s ease;
+}
+.button-text {
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: small;
+  font-size: smaller;
   padding: 1px;
+  margin-right: 3px;
+  margin-left: 3px;
 }
 .duration-header {
   display: flex;
@@ -112,6 +118,7 @@
   display: flex;
   flex-direction: row;
   justify-content: left;
+  align-items: center;
   padding: 5px;
   height: 45px;
 }
@@ -133,7 +140,7 @@
   font-size: medium;
   cursor: pointer;
   text-decoration: none;
-  background-image: linear-gradient(to right, #FC4D17, #FC4D17);
+  background-image: linear-gradient(to right, #FC4D17, transparent);
   background-position: bottom left;
   background-repeat: no-repeat;
   background-size: 10% 1px;
