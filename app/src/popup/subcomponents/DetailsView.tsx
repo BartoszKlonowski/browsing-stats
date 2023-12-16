@@ -2,6 +2,7 @@ import React, {useMemo, useState} from "react";
 import Database from "../../engine/Database";
 import {translate} from "../../engine/i18n";
 import {getHours, getMinutes, getSeconds} from "../Utils";
+import Button from "./Button";
 
 interface Props {
     website: string;
@@ -42,9 +43,7 @@ const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => 
                     </div>
                 ))}
             </div>
-            <div className="details-view-back-button" onClick={onBackButtonClick}>
-                {translate("details-view-back-button-label")}
-            </div>
+            <Button label={translate("details-view-back-button-label")} onClick={onBackButtonClick} />
         </div>
     );
 };

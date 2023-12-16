@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import ExpandedView from "./subcomponents/ExpandedView";
 import ShrinkedView from "./subcomponents/ShrinkedView";
-import ViewChangeButton from "./subcomponents/ViewChangeButton";
+import Button from "./subcomponents/Button";
 import {Sort} from "./Utils";
+import {translate} from "../engine/i18n";
 
 export const Popup = (): JSX.Element => {
     const [expanded, setExpanded] = useState(false);
@@ -18,7 +19,12 @@ export const Popup = (): JSX.Element => {
     return (
         <div className="popup-view">
             {expanded ? <ExpandedView setSortingOrder={setSortingOrder} sorted={order} /> : <ShrinkedView />}
-            <ViewChangeButton isExpanded={expanded} onClick={setExpanded} />
+            <Button
+                label={expanded ? translate("shrink-button-label") : translate("expand-button-label")}
+                onClick={() => {
+                    setExpanded(!expanded);
+                }}
+            />
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React, {useMemo, useState} from "react";
 import Database from "../../engine/Database";
 import {translate} from "../../engine/i18n";
 import {getHours, getMinutes, getSeconds, getWebsiteIconObject, Sort, sortDataEntries} from "../Utils";
+import Button from "./Button";
 
 interface Props {
     sorted: Sort;
@@ -39,13 +40,12 @@ export const TimeSpentList = ({sorted, onEnterClick}: Props) => {
                         {getHours(timeSpentInSeconds)}:{getMinutes(timeSpentInSeconds)}:{getSeconds(timeSpentInSeconds)}
                     </div>
                 </div>
-                <div
-                    className="expanded-view-tile-details-navigation-button"
+                <Button
+                    label={translate("details-button-label")}
                     onClick={() => {
                         onEnterClick(domain);
-                    }}>
-                    {translate("details-button-label")}
-                </div>
+                    }}
+                />
             </div>
         );
     };
