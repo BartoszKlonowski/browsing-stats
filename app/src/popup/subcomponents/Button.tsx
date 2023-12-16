@@ -8,13 +8,8 @@ interface Props {
 
 export const Button = ({label, onClick}: Props): JSX.Element => {
     return (
-        <button
-            className="button"
-            itemType="button"
-            onClick={onClick}>
-            <div className="button-text">
-                {label}
-            </div>
+        <button className="button" itemType="button" onClick={onClick}>
+            <div className="button-text">{translate(label)}</div>
         </button>
     );
 };

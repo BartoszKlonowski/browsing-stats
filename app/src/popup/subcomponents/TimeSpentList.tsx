@@ -1,6 +1,5 @@
 import React, {useMemo, useState} from "react";
 import Database from "../../engine/Database";
-import {translate} from "../../engine/i18n";
 import {getHours, getMinutes, getSeconds, getWebsiteIconObject, Sort, sortDataEntries} from "../Utils";
 import Button from "./Button";
 
@@ -41,7 +40,7 @@ export const TimeSpentList = ({sorted, onEnterClick}: Props) => {
                     </div>
                 </div>
                 <Button
-                    label={translate("details-button-label")}
+                    label="details-button-label"
                     onClick={() => {
                         onEnterClick(domain);
                     }}

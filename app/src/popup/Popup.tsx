@@ -4,7 +4,6 @@ import ExpandedView from "./subcomponents/ExpandedView";
 import ShrinkedView from "./subcomponents/ShrinkedView";
 import Button from "./subcomponents/Button";
 import {Sort} from "./Utils";
-import {translate} from "../engine/i18n";
 
 export const Popup = (): JSX.Element => {
     const [expanded, setExpanded] = useState(false);
@@ -20,7 +19,7 @@ export const Popup = (): JSX.Element => {
         <div className="popup-view">
             {expanded ? <ExpandedView setSortingOrder={setSortingOrder} sorted={order} /> : <ShrinkedView />}
             <Button
-                label={expanded ? translate("shrink-button-label") : translate("expand-button-label")}
+                label={expanded ? "shrink-button-label" : "expand-button-label"}
                 onClick={() => {
                     setExpanded(!expanded);
                 }}

@@ -43,7 +43,7 @@ const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => 
                     </div>
                 ))}
             </div>
-            <Button label={translate("details-view-back-button-label")} onClick={onBackButtonClick} />
+            <Button label="details-view-back-button-label" onClick={onBackButtonClick} />
         </div>
     );
 };
