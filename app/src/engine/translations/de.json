@@ -11,5 +11,6 @@
     "details-button-label": "Einzelheiten",
     "details-view-back-button-label": "Zurück",
     "details-view-last-visited-label": "Letzter Besuch",
-    "details-view-number-of-visits": "Gesamtbesuche"
+    "details-view-number-of-visits": "Gesamtbesuche",
+    "details-view-average-daily-time": "Durchschnittliche täglich"
 }

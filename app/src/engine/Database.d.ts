@@ -18,4 +18,8 @@ export default class Database {
     writeNumberOfVisits(domain: string, visitsNumber: number): void;
 
     readNumberOfVisits(domain: string, onReturn: (visitsNumber: number) => void): void;
+
+    writeFirstVisitDate(domain: string, date: Date): void;
+
+    readFirstVisitDate(domain: string, onReturn: (firstVisitDate: Date) => void): void;
 }

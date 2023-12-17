@@ -165,6 +165,40 @@ class Database {
             console.error("writeNumberOfVisits.error: ", error);
         }
     }
+
+    writeFirstVisitDate(domain: string, date: Date): void {
+        try {
+            const firstVisitObject = this.storage.getItem("firstVisit");
+            if (firstVisitObject && firstVisitObject.length && firstVisitObject !== "{}") {
+                const firstVisitMap = new Map<string, Date>(JSON.parse(firstVisitObject));
+                if (!firstVisitMap.has(domain)) {
+                    firstVisitMap.set(domain, date);
+                    this.storage.setItem("firstVisit", JSON.stringify(Array.from(firstVisitMap.entries())));
+                }
+            } else {
+                this.storage.setItem(
+                    "firstVisit",
+                    JSON.stringify(Array.from(new Map<string, Date>([[domain, date]]).entries()))
+                );
+            }
+        } catch (error) {
+            console.error("writeFirstVisitDate.error: ", error);
+        }
+    }
+
+    readFirstVisitDate(domain: string, onReturn: (firstVisitDate: Date) => void): void {
+        try {
+            const firstVisitObject = this.storage.getItem("firstVisit");
+            const firstVisitMap =
+                firstVisitObject && firstVisitObject !== "{}"
+                    ? new Map<string, Date>(JSON.parse(firstVisitObject))
+                    : new Map<string, Date>([]);
+            onReturn(firstVisitMap.get(domain) || new Date());
+        } catch (exception) {
+            console.error("readNumberOfVisits.error", exception);
+            onReturn(new Date());
+        }
+    }
 }
 
 export default Database;

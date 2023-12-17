@@ -1,8 +1,12 @@
 import React, {useMemo, useState} from "react";
 import Database from "../../engine/Database";
 import {translate} from "../../engine/i18n";
-import {getHours, getMinutes, getSeconds} from "../Utils";
+import {calculateAverageTimeSpentPerDay, getHours, getMinutes, getSeconds} from "../Utils";
 import Button from "./Button";
+
+const timeInSecondsToDisplayFormat = (timeInSeconds: number) => {
+    return `${getHours(timeInSeconds)}:${getMinutes(timeInSeconds)}:${getSeconds(timeInSeconds)}`;
+};
 
 interface Props {
     website: string;
@@ -13,6 +17,7 @@ const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => 
     const [lastVisited, setLastVisited] = useState<string>("...");
     const [timeSpent, setTimeSpent] = useState<string>("...");
     const [numberOfVisits, setNumberOfVisits] = useState<number>(0);
+    const [avgTimeSpentDaily, setAvgTimeSpentDaily] = useState("...");
     const db = new Database();
 
     useMemo(() => {
@@ -20,8 +25,12 @@ const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => 
             setLastVisited(date.toLocaleString());
         });
         db.readTimeSpent((result) => {
+            db.readFirstVisitDate(website, (date) => {
+                const avgDailyInSeconds = calculateAverageTimeSpentPerDay(date, result as number);
+                setAvgTimeSpentDaily(timeInSecondsToDisplayFormat(avgDailyInSeconds));
+            });
             const timeInSeconds = result as number;
-            setTimeSpent(`${getHours(timeInSeconds)}:${getMinutes(timeInSeconds)}:${getSeconds(timeInSeconds)}`);
+            setTimeSpent(timeInSecondsToDisplayFormat(timeInSeconds));
         }, website);
         db.readNumberOfVisits(website, (number) => setNumberOfVisits(number));
     }, []);
@@ -30,6 +39,7 @@ const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => 
         {detail: translate("duration-header"), value: timeSpent},
         {detail: translate("details-view-last-visited-label"), value: lastVisited},
         {detail: translate("details-view-number-of-visits"), value: numberOfVisits},
+        {detail: translate("details-view-average-daily-time"), value: avgTimeSpentDaily},
     ];
 
     return (
