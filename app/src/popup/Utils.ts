@@ -73,6 +73,14 @@ export function storeVisitsNumber(domain: string | null) {
     });
 }
 
+export function storeFirstVisitDateForDomain(domain: string): void {
+    if (!domain) {
+        return;
+    }
+    const db = new Database();
+    db.writeFirstVisitDate(domain, new Date());
+}
+
 export const sortDataEntries = (data: Map<string, number>, sortMethod: Sort) => {
     return new Map(
         [...data].sort((entry1: [string, number], entry2: [string, number]) => {
@@ -99,6 +107,12 @@ export function calculateTimeSpentForDomain(domain: string) {
             db.writeTimeSpent(domain, Math.trunc(Math.abs(Date.now() - date.getTime()) / 1000) + (content as number));
         }, domain);
     });
+}
+
+export function calculateAverageTimeSpentPerDay(firstVisitDate: Date, totalVisitTime: number): number {
+    const millisecondsSinceFirstVisit = Date.now() - new Date(firstVisitDate).getTime();
+    const daysSinceFirstVisit = Math.max(1, Math.trunc(millisecondsSinceFirstVisit / (1000 * 60 * 60 * 24)));
+    return totalVisitTime / daysSinceFirstVisit;
 }
 
 export const howManyHoursInSeconds = (timeInSeconds: number): number => {

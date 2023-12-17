@@ -1,5 +1,6 @@
 import Database from "../app/src/engine/Database";
 import {
+    calculateAverageTimeSpentPerDay,
     getActiveTabDomainFromURL,
     getWebsiteIconObject,
     howManyHoursInSeconds,
@@ -159,6 +160,26 @@ describe("sortDataEntries", () => {
             ["test", 3],
         ]);
         expect(sortDataEntries(dataset, Sort.NameAscending)).toEqual(expected);
+    });
+});
+
+describe("calculateAverageTimeSpentPerDay", () => {
+    beforeAll(() => {
+        jest.useFakeTimers().setSystemTime(1000 * 60 * 60 * 10 * 24);
+    });
+    it("returns 100 seconds if the first visit is today", () => {
+        const avgTime = calculateAverageTimeSpentPerDay(new Date(1000 * 60 * 60 * 10 * 24), 100);
+        expect(avgTime).toBe(100);
+    });
+
+    it("returns 200 seconds if the first visit is day after", () => {
+        const avgTime = calculateAverageTimeSpentPerDay(new Date(1000 * 60 * 60 * 9 * 24), 200);
+        expect(avgTime).toBe(200);
+    });
+
+    it("returns proper days if the first visit is several days before", () => {
+        const avgTime = calculateAverageTimeSpentPerDay(new Date(1000 * 60 * 60 * 2 * 24), 300);
+        expect(avgTime).toBe(300 / 8);
     });
 });
 
