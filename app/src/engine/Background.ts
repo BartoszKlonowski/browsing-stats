@@ -1,5 +1,10 @@
 import browser from "webextension-polyfill";
-import {calculateTimeSpentForDomain, getActiveTabDomainFromURL, storeVisitsNumber} from "../popup/Utils";
+import {
+    calculateTimeSpentForDomain,
+    getActiveTabDomainFromURL,
+    storeFirstVisitDateForDomain,
+    storeVisitsNumber,
+} from "../popup/Utils";
 import {storeTimeSpentSummary} from "../popup/Utils";
 import Database from "./Database";
 
@@ -12,6 +17,7 @@ browser.tabs.onActivated.addListener((activeInfo) => {
 browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status == "complete") {
         const activeDomain = getActiveTabDomainFromURL(tab.url || "");
+        storeFirstVisitDateForDomain(activeDomain || "");
         storeVisitsNumber(activeDomain);
         storeTimeSpentSummary(activeDomain || "");
     }
