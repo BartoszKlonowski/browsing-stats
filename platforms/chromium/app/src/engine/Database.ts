@@ -232,6 +232,56 @@ class Database {
             onReturn(0);
         }
     }
+
+    writeFirstVisitDate(domain: string, date: Date): void {
+        if (domain?.length === 0) {
+            return;
+        }
+        try {
+            browser.storage.local
+                .get("firstVisit")
+                .then((content) => {
+                    if (!!content && Object.keys(content) && Object.keys(content)?.length) {
+                        const firstVisitMap = new Map<string, Date>(Object.values(content.firstVisit));
+                        if (!firstVisitMap.has(domain)) {
+                            firstVisitMap.set(domain, date);
+                            browser.storage.local.set(
+                                JSON.parse(`{"firstVisit":${JSON.stringify(Array.from(firstVisitMap.entries()))}}`)
+                            );
+                        }
+                    } else {
+                        browser.storage.local.set(
+                            JSON.parse(
+                                `{"firstVisit":${JSON.stringify(Array.from(new Map<string, Date>([]).entries()))}}`
+                            )
+                        );
+                    }
+                })
+                .catch((error) => {
+                    console.error("writeFirstVisitDate.browser.storage.local.get.error: ", error);
+                });
+        } catch (exception) {
+            console.error(`ERROR: `, exception);
+        }
+    }
+
+    readFirstVisitDate(domain: string, onReturn: (firstVisitDate: Date) => void): void {
+        if (domain.length === 0) {
+            return;
+        }
+        try {
+            browser.storage.local.get("firstVisit").then((content) => {
+                const firstVisitMap =
+                    content && Object.keys(content).length
+                        ? new Map<string, Date>(Object.values(content.firstVisit))
+                        : new Map<string, Date>([]);
+                onReturn(firstVisitMap.get(domain) || new Date());
+            });
+        } catch (exception) {
+            console.error("ERROR: ", exception);
+            onReturn(new Date());
+        }
+    }
 }
 
 export default Database;
