@@ -290,9 +290,9 @@ describe("DetailsView", () => {
         };
         render(<DetailsView website="test" onBackButtonClick={() => undefined} />);
         const timeSpentLabel = await screen.findByText(`${translate("duration-header")}:`);
-        const timeSpentValue = await screen.findByText("0:04:03");
+        const timeSpentValue = await screen.findAllByText("0:04:03");
         expect(timeSpentLabel?.textContent).toBe(`${translate("duration-header")}:`);
-        expect(timeSpentValue?.textContent).toBe("0:04:03");
+        expect(timeSpentValue[0].textContent).toBe("0:04:03");
     });
 
     it("contains the total number of visits with proper label and value matching storage state", async () => {
@@ -305,5 +305,15 @@ describe("DetailsView", () => {
         const totalNumberValue = await screen.findByText("24");
         expect(totalNumberLabel?.textContent).toBe(`${translate("details-view-number-of-visits")}:`);
         expect(totalNumberValue?.textContent).toBe("24");
+    });
+
+    it("contains the average time spent daily on the website with proper values", async () => {
+        global._localStorage.setItem = jest.fn();
+        global._localStorage.getItem = (key: string) => {
+            return `[["${key}", "121"],["test", "245"]]`;
+        };
+        render(<DetailsView website="test" onBackButtonClick={() => undefined} />);
+        const avgTimeLabel = await screen.findByText(`${translate("details-view-average-daily-time")}:`);
+        expect(avgTimeLabel).toBeDefined();
     });
 });

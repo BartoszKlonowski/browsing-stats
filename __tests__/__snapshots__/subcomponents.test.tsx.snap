@@ -66,6 +66,20 @@ exports[`DetailsView renders correctly according to snapshot 1`] = `
         invalid-mocked-date
       </div>
     </div>
+    <div
+      className="details-view-table-row"
+    >
+      <div
+        className="details-view-table-label"
+      >
+        Average daily:
+      </div>
+      <div
+        className="details-view-table-value"
+      >
+        NaN:00:NaN
+      </div>
+    </div>
   </div>
   <button
     className="button"
