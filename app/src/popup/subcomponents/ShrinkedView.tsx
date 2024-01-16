@@ -46,8 +46,6 @@ export const ShrinkedView = () => {
     });
 
     return (
-        <>
-            <DurationHeader />
             <div className="shrinked-view-container">
                 <div className="shrinked-view-icon-container">
                     <img className="shrinked-view-icon" width={icon.size} height={icon.size} src={icon.src} />
@@ -58,7 +56,6 @@ export const ShrinkedView = () => {
                     </div>
                 </div>
             </div>
-        </>
     );
 };
 

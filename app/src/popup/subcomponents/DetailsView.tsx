@@ -9,17 +9,20 @@ const timeInSecondsToDisplayFormat = (timeInSeconds: number) => {
 };
 
 interface Props {
-    website: string;
+    website?: string | null;
     onBackButtonClick: () => void;
 }
 
-const DetailsView = ({website, onBackButtonClick}: Props): React.JSX.Element => {
+const DetailsView = ({website, onBackButtonClick}: Props) => {
     const [lastVisited, setLastVisited] = useState<string>("...");
     const [timeSpent, setTimeSpent] = useState<string>("...");
     const [numberOfVisits, setNumberOfVisits] = useState<number>(0);
     const [avgTimeSpentDaily, setAvgTimeSpentDaily] = useState("...");
     const db = new Database();
 
+    if (!website) {
+        return null;
+    }
     useMemo(() => {
         db.readLastVisited(website, (date) => {
             setLastVisited(date.toLocaleString());

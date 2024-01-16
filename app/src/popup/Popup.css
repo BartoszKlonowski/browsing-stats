@@ -1,7 +1,9 @@
 .popup-view {
+  width: 500px;
   border: 2px solid #00e080;
   background-image: linear-gradient(0.35turn, #E0E0E0, transparent);
   align-content: space-around;
+  scrollbar-width: none;
   padding: 2px;
 }
 .button {
@@ -29,13 +31,13 @@
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 3px;
   height: 40px;
 }
 .duration-header-text {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: medium;
-  padding: 5px;
+  padding: 3px;
 }
 .sorting-container {
   padding: 5px;
@@ -68,7 +70,6 @@
 .shrinked-view-container {
   padding: 5px;
   height: 40px;
-  width: 120px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -109,7 +110,6 @@
   scrollbar-color: #FC4D17 transparent;
 }
 .expanded-view-list-container {
-  max-width: 500px;
   padding: 5px;
   overflow: hidden;
   scrollbar-color: #FC4D17;
@@ -173,7 +173,6 @@
 }
 .details-view-container {
   height: 360px;
-  width: 500px;
   padding: 5px;
 }
 .details-view-website-title {

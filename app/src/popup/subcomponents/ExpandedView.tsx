@@ -6,23 +6,16 @@ import TimeSpentList from "./TimeSpentList";
 
 interface Props {
     sorted: Sort;
-    setSortingOrder: (order: Sort) => void;
+    setDetailsScreenWebsite: (website: string) => void;
 }
 
-export const ExpandedView = ({sorted, setSortingOrder}: Props) => {
-    const [detailsScreenWebsite, setDetailsScreenWebsite] = useState<string | null>();
+export const ExpandedView = ({sorted, setDetailsScreenWebsite}: Props) => {
 
     return (
-        <>
-            {!detailsScreenWebsite ? <DurationHeader onSortSelected={setSortingOrder} /> : null}
-            {detailsScreenWebsite ? (
-                <DetailsView website={detailsScreenWebsite} onBackButtonClick={() => setDetailsScreenWebsite(null)} />
-            ) : (
-                <div className="expanded-view-list-container">
-                    <TimeSpentList sorted={sorted} onEnterClick={(domain) => setDetailsScreenWebsite(domain)} />
-                </div>
-            )}
-        </>
+
+                        <div className="expanded-view-list-container">
+                        <TimeSpentList sorted={sorted} onEnterClick={(domain) => setDetailsScreenWebsite(domain)} />
+                    </div>
     );
 };
 
