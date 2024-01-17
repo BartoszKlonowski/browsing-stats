@@ -427,6 +427,17 @@ Array [
         00
       </div>
     </div>
+    <button
+      className="button"
+      itemType="button"
+      onClick={[Function]}
+    >
+      <div
+        className="button-text"
+      >
+        Details
+      </div>
+    </button>
   </div>,
 ]
 `;
