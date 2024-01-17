@@ -80,7 +80,7 @@ describe("ShrinkedView", () => {
             });
         };
         const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
-        const timeSpentText = getChild(getChild(shrinkedView[1], 1), 0);
+        const timeSpentText = shrinkedView[1].children[2].children[0];
         expect(timeSpentText).toBeDefined();
         expect(`${getChild(timeSpentText, 0)}:${getChild(timeSpentText, 2)}:${getChild(timeSpentText, 4)}`).toBe(
             "0:00:00"
@@ -132,7 +132,7 @@ describe("ExpandedView", () => {
             />
         );
         expect(expandedView[1]).toBeDefined();
-        expect(getChild(expandedView[1], 0).children).toBeNull();
+        expect(expandedView[1].children).toBeNull();
     });
 
     it("contains a list items of proper type and layout", async () => {
@@ -148,8 +148,8 @@ describe("ExpandedView", () => {
                 setDetailsScreen={jest.fn()}
             />
         );
-        const mainList = getChild(expandedView[1], 0);
-        expect(mainList.type).toBe("ul");
+        const mainList = expandedView[1];
+        expect(mainList.type).toBe("div");
         expect(getChild(mainList, 0).type).toBe("li");
         expect(getChild(mainList, 1).type).toBe("li");
     });
@@ -167,7 +167,7 @@ describe("ExpandedView", () => {
                 setDetailsScreen={jest.fn()}
             />
         );
-        expect(getChild(expandedView[1], 0).children.length).toBe(3);
+        expect(expandedView[1].children.length).toBe(3);
     });
 });
 
