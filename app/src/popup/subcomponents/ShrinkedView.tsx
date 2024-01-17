@@ -11,7 +11,11 @@ const getCurrentTimeForCurrentDomain = (domain: string, onResult: (content: numb
     db.readTimeSpent(onResult, domain);
 };
 
-export const ShrinkedView = () => {
+interface Props {
+    setDetailsScreen: (isDetails: boolean) => void;
+}
+
+export const ShrinkedView = ({setDetailsScreen}: Props) => {
     const [icon, setIcon] = useState<Icon>(getWebsiteIconObject(""));
     const [timeInSeconds, setTimeInSeconds] = useState(0);
     const [activeDomain, setActiveDomain] = useState("");
@@ -52,7 +56,13 @@ export const ShrinkedView = () => {
         <>
             {!detailsScreenWebsite ? <DurationHeader /> : null}
             {detailsScreenWebsite ? (
-                <DetailsView website={detailsScreenWebsite} onBackButtonClick={() => setDetailsScreenWebsite(null)} />
+                <DetailsView
+                    website={detailsScreenWebsite}
+                    onBackButtonClick={() => {
+                        setDetailsScreenWebsite(null);
+                        setDetailsScreen(false);
+                    }}
+                />
             ) : (
                 <div className="shrinked-view-container">
                     <div className="shrinked-view-icon-container">
@@ -63,7 +73,13 @@ export const ShrinkedView = () => {
                             {getHours(timeInSeconds)}:{getMinutes(timeInSeconds)}:{getSeconds(timeInSeconds)}
                         </div>
                     </div>
-                    <Button label="details-button-label" onClick={() => setDetailsScreenWebsite(activeDomain)} />
+                    <Button
+                        label="details-button-label"
+                        onClick={() => {
+                            setDetailsScreenWebsite(activeDomain);
+                            setDetailsScreen(true);
+                        }}
+                    />
                 </div>
             )}
         </>
