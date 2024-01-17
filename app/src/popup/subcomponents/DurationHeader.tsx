@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const DurationHeader = ({isDetailsScreen, onSortSelected}: Props) => {
-    if(isDetailsScreen) {
+    if (isDetailsScreen) {
         return null;
     }
     return (

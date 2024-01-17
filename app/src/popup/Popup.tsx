@@ -20,15 +20,23 @@ export const Popup = (): JSX.Element => {
 
     return (
         <div className="popup-view">
-            <DurationHeader isDetailsScreen={!!detailsScreenWebsite}  onSortSelected={expanded ? setSortingOrder : undefined} />
+            <DurationHeader
+                isDetailsScreen={!!detailsScreenWebsite}
+                onSortSelected={expanded ? setSortingOrder : undefined}
+            />
+            {detailsScreenWebsite ? (
+                <DetailsView website={detailsScreenWebsite} onBackButtonClick={() => setDetailsScreenWebsite(null)} />
+            ) : null}
+            {!expanded && !detailsScreenWebsite ? <ShrinkedView onEnterClick={setDetailsScreenWebsite} /> : null}
+            {expanded && !detailsScreenWebsite ? (
+                <ExpandedView setDetailsScreenWebsite={setDetailsScreenWebsite} sorted={order} />
+            ) : null}
             <Button
                 label={expanded ? "shrink-button-label" : "expand-button-label"}
                 onClick={() => {
                     setExpanded(!expanded);
                 }}
             />
-            <DetailsView website={detailsScreenWebsite} onBackButtonClick={() => setDetailsScreenWebsite(null)} />
-            {expanded ? <ExpandedView setDetailsScreenWebsite={setDetailsScreenWebsite} sorted={order} /> : <ShrinkedView />}
         </div>
     );
 };

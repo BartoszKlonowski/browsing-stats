@@ -51,7 +51,7 @@ export const TimeSpentList = ({sorted, onEnterClick}: Props) => {
 
     const data = sortDataEntries(timeSpentTilesData, sorted);
     return (
-        <ul className="expanded-view-list">
+        <ul className="expanded-view-list-container">
             {[...data].map(([domain, timeSpentInSeconds]) => (
                 <li key={`timeSpentTile-${domain}`}>{renderTimeSpentTile(domain, timeSpentInSeconds)}</li>
             ))}

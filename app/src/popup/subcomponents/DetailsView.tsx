@@ -9,7 +9,7 @@ const timeInSecondsToDisplayFormat = (timeInSeconds: number) => {
 };
 
 interface Props {
-    website?: string | null;
+    website: string;
     onBackButtonClick: () => void;
 }
 
@@ -20,9 +20,6 @@ const DetailsView = ({website, onBackButtonClick}: Props) => {
     const [avgTimeSpentDaily, setAvgTimeSpentDaily] = useState("...");
     const db = new Database();
 
-    if (!website) {
-        return null;
-    }
     useMemo(() => {
         db.readLastVisited(website, (date) => {
             setLastVisited(date.toLocaleString());

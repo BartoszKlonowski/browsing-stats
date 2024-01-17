@@ -1,8 +1,11 @@
+html, body {
+  scrollbar-width: none;
+  overflow: hidden;
+}
 .popup-view {
-  width: 500px;
+  width: 450px;
   border: 2px solid #00e080;
   background-image: linear-gradient(0.35turn, #E0E0E0, transparent);
-  align-content: space-around;
   scrollbar-width: none;
   padding: 2px;
 }
@@ -40,7 +43,7 @@
   padding: 3px;
 }
 .sorting-container {
-  padding: 5px;
+  padding: 3px;
   display: flex;
   flex-direction: row;
   width: 240px;
@@ -110,16 +113,20 @@
   scrollbar-color: #FC4D17 transparent;
 }
 .expanded-view-list-container {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: #FC4D17 transparent;
   padding: 5px;
-  overflow: hidden;
-  scrollbar-color: #FC4D17;
 }
 .expanded-view-tile-container {
   display: flex;
   flex-direction: row;
-  justify-content: left;
   align-items: center;
-  padding: 5px;
+  justify-items: flex-start;
+  padding: 8px;
   height: 45px;
 }
 .expanded-view-icon-container {
@@ -145,6 +152,12 @@
   background-repeat: no-repeat;
   background-size: 10% 1px;
   transition: background-size .5s ease;
+}
+.shrinked-view-domain-text {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: medium;
+  cursor: default;
+  text-decoration: none;
 }
 .expanded-view-domain-text:hover {
   background-size: 50% 1px;
@@ -172,7 +185,7 @@
   transition: .2s ease;
 }
 .details-view-container {
-  height: 360px;
+  height: 378px;
   padding: 5px;
 }
 .details-view-website-title {

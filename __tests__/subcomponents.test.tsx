@@ -156,12 +156,9 @@ describe("ExpandedView", () => {
         };
         const expandedView = await renderElementAsObject(
             <ExpandedView
-                setSortingOrder={(order) => {
-                    order;
-                }}
-                sorted={Sort.None}
-            />
+                sorted={Sort.None} setDetailsScreenWebsite={jest.fn()}            />
         );
+        console.log(expandedView)
         expect(getChild(expandedView[1], 0).children.length).toBe(3);
     });
 });
