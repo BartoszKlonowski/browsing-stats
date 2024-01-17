@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {Fragment, useState} from "react";
 import {Sort} from "../Utils";
 import DetailsView from "./DetailsView";
 import DurationHeader from "./DurationHeader";
@@ -14,7 +14,7 @@ export const ExpandedView = ({sorted, setSortingOrder, setDetailsScreen}: Props)
     const [detailsScreenWebsite, setDetailsScreenWebsite] = useState<string | null>();
 
     return (
-        <>
+        <Fragment>
             {!detailsScreenWebsite ? <DurationHeader onSortSelected={setSortingOrder} /> : null}
             {detailsScreenWebsite ? (
                 <DetailsView
@@ -25,17 +25,15 @@ export const ExpandedView = ({sorted, setSortingOrder, setDetailsScreen}: Props)
                     }}
                 />
             ) : (
-                <div className="expanded-view-list-container">
-                    <TimeSpentList
-                        sorted={sorted}
-                        onEnterClick={(domain) => {
-                            setDetailsScreenWebsite(domain);
-                            setDetailsScreen(true);
-                        }}
-                    />
-                </div>
+                <TimeSpentList
+                    sorted={sorted}
+                    onEnterClick={(domain) => {
+                        setDetailsScreenWebsite(domain);
+                        setDetailsScreen(true);
+                    }}
+                />
             )}
-        </>
+        </Fragment>
     );
 };
 

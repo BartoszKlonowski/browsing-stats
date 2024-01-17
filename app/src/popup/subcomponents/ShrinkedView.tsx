@@ -68,6 +68,9 @@ export const ShrinkedView = ({setDetailsScreen}: Props) => {
                     <div className="shrinked-view-icon-container">
                         <img className="shrinked-view-icon" width={icon.size} height={icon.size} src={icon.src} />
                     </div>
+                    <div className="expanded-view-domain-container">
+                        <div className="shrinked-view-domain-text">{activeDomain}</div>
+                    </div>
                     <div className="shrinked-view-time-spent-text-container">
                         <div className="shrinked-view-time-spent-text">
                             {getHours(timeInSeconds)}:{getMinutes(timeInSeconds)}:{getSeconds(timeInSeconds)}
