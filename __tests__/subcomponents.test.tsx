@@ -33,7 +33,7 @@ beforeEach(() => {
 
 describe("ShrinkedView", () => {
     it("renders correctly according to snapshot", () => {
-        const shrinkedView = renderElement(<ShrinkedView />);
+        const shrinkedView = renderElement(<ShrinkedView setDetailsScreen={jest.fn()} />);
         expect(shrinkedView.toJSON()).toMatchSnapshot();
     });
 
@@ -43,7 +43,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: ""}]);
             });
         };
-        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
+        const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
         expect(shrinkedView[0].props.className).toBe("duration-header");
     });
 
@@ -53,7 +53,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: ""}]);
             });
         };
-        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
+        const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
         const img = getChild(getChild(shrinkedView[1], 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
@@ -66,7 +66,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: "proper.existing.icon.url"}]);
             });
         };
-        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
+        const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
         const img = getChild(getChild(shrinkedView[1], 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
@@ -79,7 +79,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: ""}]);
             });
         };
-        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
+        const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
         const timeSpentText = getChild(getChild(shrinkedView[1], 1), 0);
         expect(timeSpentText).toBeDefined();
         expect(`${getChild(timeSpentText, 0)}:${getChild(timeSpentText, 2)}:${getChild(timeSpentText, 4)}`).toBe(
@@ -96,6 +96,7 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
         expect(expandedView.toJSON()).toMatchSnapshot();
@@ -111,6 +112,7 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
         expect(expandedView[0].props.className).toBe("duration-header");
@@ -126,6 +128,7 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
         expect(expandedView[1]).toBeDefined();
@@ -142,6 +145,7 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
         const mainList = getChild(expandedView[1], 0);
@@ -160,6 +164,7 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
         expect(getChild(expandedView[1], 0).children.length).toBe(3);
