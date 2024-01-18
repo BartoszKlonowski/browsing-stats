@@ -112,7 +112,7 @@ export function calculateTimeSpentForDomain(domain: string) {
 export function calculateAverageTimeSpentPerDay(firstVisitDate: Date, totalVisitTime: number): number {
     const millisecondsSinceFirstVisit = Date.now() - new Date(firstVisitDate).getTime();
     const daysSinceFirstVisit = Math.max(1, Math.trunc(millisecondsSinceFirstVisit / (1000 * 60 * 60 * 24)));
-    return totalVisitTime / daysSinceFirstVisit;
+    return Math.round(totalVisitTime / daysSinceFirstVisit);
 }
 
 export const howManyHoursInSeconds = (timeInSeconds: number): number => {

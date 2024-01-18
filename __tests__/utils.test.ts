@@ -179,7 +179,7 @@ describe("calculateAverageTimeSpentPerDay", () => {
 
     it("returns proper days if the first visit is several days before", () => {
         const avgTime = calculateAverageTimeSpentPerDay(new Date(1000 * 60 * 60 * 2 * 24), 300);
-        expect(avgTime).toBe(300 / 8);
+        expect(avgTime).toBe(Math.round(300 / 8));
     });
 });
 
