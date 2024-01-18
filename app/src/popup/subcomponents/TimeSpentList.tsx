@@ -51,11 +51,11 @@ export const TimeSpentList = ({sorted, onEnterClick}: Props) => {
 
     const data = sortDataEntries(timeSpentTilesData, sorted);
     return (
-        <ul className="expanded-view-list">
+        <div className="expanded-view-list">
             {[...data].map(([domain, timeSpentInSeconds]) => (
                 <li key={`timeSpentTile-${domain}`}>{renderTimeSpentTile(domain, timeSpentInSeconds)}</li>
             ))}
-        </ul>
+        </div>
     );
 };
 

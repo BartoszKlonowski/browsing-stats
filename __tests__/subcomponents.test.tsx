@@ -33,7 +33,7 @@ beforeEach(() => {
 
 describe("ShrinkedView", () => {
     it("renders correctly according to snapshot", () => {
-        const shrinkedView = renderElement(<ShrinkedView />);
+        const shrinkedView = renderElement(<ShrinkedView setDetailsScreen={jest.fn()} />);
         expect(shrinkedView.toJSON()).toMatchSnapshot();
     });
 
@@ -43,7 +43,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: ""}]);
             });
         };
-        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
+        const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
         expect(shrinkedView[0].props.className).toBe("duration-header");
     });
 
@@ -53,7 +53,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: ""}]);
             });
         };
-        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
+        const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
         const img = getChild(getChild(shrinkedView[1], 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
@@ -66,7 +66,7 @@ describe("ShrinkedView", () => {
                 resolve([{url: "proper.existing.icon.url"}]);
             });
         };
-        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
+        const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
         const img = getChild(getChild(shrinkedView[1], 0), 0);
         expect(img).toBeDefined();
         expect(img.type).toBe("img");
@@ -79,8 +79,8 @@ describe("ShrinkedView", () => {
                 resolve([{url: ""}]);
             });
         };
-        const shrinkedView = await renderElementAsObject(<ShrinkedView />);
-        const timeSpentText = getChild(getChild(shrinkedView[1], 1), 0);
+        const shrinkedView = await renderElementAsObject(<ShrinkedView setDetailsScreen={jest.fn()} />);
+        const timeSpentText = shrinkedView[1].children[2].children[0];
         expect(timeSpentText).toBeDefined();
         expect(`${getChild(timeSpentText, 0)}:${getChild(timeSpentText, 2)}:${getChild(timeSpentText, 4)}`).toBe(
             "0:00:00"
@@ -96,6 +96,7 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
         expect(expandedView.toJSON()).toMatchSnapshot();
@@ -111,6 +112,7 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
         expect(expandedView[0].props.className).toBe("duration-header");
@@ -126,10 +128,11 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
         expect(expandedView[1]).toBeDefined();
-        expect(getChild(expandedView[1], 0).children).toBeNull();
+        expect(expandedView[1].children).toBeNull();
     });
 
     it("contains a list items of proper type and layout", async () => {
@@ -142,10 +145,11 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
-        const mainList = getChild(expandedView[1], 0);
-        expect(mainList.type).toBe("ul");
+        const mainList = expandedView[1];
+        expect(mainList.type).toBe("div");
         expect(getChild(mainList, 0).type).toBe("li");
         expect(getChild(mainList, 1).type).toBe("li");
     });
@@ -160,9 +164,10 @@ describe("ExpandedView", () => {
                     order;
                 }}
                 sorted={Sort.None}
+                setDetailsScreen={jest.fn()}
             />
         );
-        expect(getChild(expandedView[1], 0).children.length).toBe(3);
+        expect(expandedView[1].children.length).toBe(3);
     });
 });
 

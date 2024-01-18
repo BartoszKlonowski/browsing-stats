@@ -130,262 +130,258 @@ Array [
     </div>
   </div>,
   <div
-    className="expanded-view-list-container"
+    className="expanded-view-list"
   >
-    <ul
-      className="expanded-view-list"
-    >
-      <li>
+    <li>
+      <div
+        className="expanded-view-tile-container"
+      >
         <div
-          className="expanded-view-tile-container"
+          className="expanded-view-icon-container"
+        >
+          <img
+            className="expanded-view-icon"
+            height={20}
+            src="https://icons.duckduckgo.com/ip3/w3schools.com.ico"
+            width={20}
+          />
+        </div>
+        <div
+          className="expanded-view-domain-container"
         >
           <div
-            className="expanded-view-icon-container"
-          >
-            <img
-              className="expanded-view-icon"
-              height={20}
-              src="https://icons.duckduckgo.com/ip3/w3schools.com.ico"
-              width={20}
-            />
-          </div>
-          <div
-            className="expanded-view-domain-container"
-          >
-            <div
-              className="expanded-view-domain-text"
-              onClick={[Function]}
-            >
-              w3schools.com
-            </div>
-          </div>
-          <div
-            className="expanded-view-time-spent-text-container"
-          >
-            <div
-              className="expanded-view-time-spent-text"
-            >
-              0
-              :
-              01
-              :
-              13
-            </div>
-          </div>
-          <button
-            className="button"
-            itemType="button"
+            className="expanded-view-domain-text"
             onClick={[Function]}
           >
-            <div
-              className="button-text"
-            >
-              Details
-            </div>
-          </button>
+            w3schools.com
+          </div>
         </div>
-      </li>
-      <li>
         <div
-          className="expanded-view-tile-container"
+          className="expanded-view-time-spent-text-container"
         >
           <div
-            className="expanded-view-icon-container"
+            className="expanded-view-time-spent-text"
           >
-            <img
-              className="expanded-view-icon"
-              height={20}
-              src="https://icons.duckduckgo.com/ip3/ackoverflow.com.ico"
-              width={20}
-            />
+            0
+            :
+            01
+            :
+            13
           </div>
-          <div
-            className="expanded-view-domain-container"
-          >
-            <div
-              className="expanded-view-domain-text"
-              onClick={[Function]}
-            >
-              ackoverflow.com
-            </div>
-          </div>
-          <div
-            className="expanded-view-time-spent-text-container"
-          >
-            <div
-              className="expanded-view-time-spent-text"
-            >
-              0
-              :
-              11
-              :
-              14
-            </div>
-          </div>
-          <button
-            className="button"
-            itemType="button"
-            onClick={[Function]}
-          >
-            <div
-              className="button-text"
-            >
-              Details
-            </div>
-          </button>
         </div>
-      </li>
-      <li>
-        <div
-          className="expanded-view-tile-container"
+        <button
+          className="button"
+          itemType="button"
+          onClick={[Function]}
         >
           <div
-            className="expanded-view-icon-container"
+            className="button-text"
           >
-            <img
-              className="expanded-view-icon"
-              height={20}
-              src="https://icons.duckduckgo.com/ip3/github.com.ico"
-              width={20}
-            />
+            Details
           </div>
-          <div
-            className="expanded-view-domain-container"
-          >
-            <div
-              className="expanded-view-domain-text"
-              onClick={[Function]}
-            >
-              github.com
-            </div>
-          </div>
-          <div
-            className="expanded-view-time-spent-text-container"
-          >
-            <div
-              className="expanded-view-time-spent-text"
-            >
-              0
-              :
-              10
-              :
-              07
-            </div>
-          </div>
-          <button
-            className="button"
-            itemType="button"
-            onClick={[Function]}
-          >
-            <div
-              className="button-text"
-            >
-              Details
-            </div>
-          </button>
-        </div>
-      </li>
-      <li>
+        </button>
+      </div>
+    </li>
+    <li>
+      <div
+        className="expanded-view-tile-container"
+      >
         <div
-          className="expanded-view-tile-container"
+          className="expanded-view-icon-container"
+        >
+          <img
+            className="expanded-view-icon"
+            height={20}
+            src="https://icons.duckduckgo.com/ip3/ackoverflow.com.ico"
+            width={20}
+          />
+        </div>
+        <div
+          className="expanded-view-domain-container"
         >
           <div
-            className="expanded-view-icon-container"
-          >
-            <img
-              className="expanded-view-icon"
-              height={20}
-              src="https://icons.duckduckgo.com/ip3/google.com.ico"
-              width={20}
-            />
-          </div>
-          <div
-            className="expanded-view-domain-container"
-          >
-            <div
-              className="expanded-view-domain-text"
-              onClick={[Function]}
-            >
-              google.com
-            </div>
-          </div>
-          <div
-            className="expanded-view-time-spent-text-container"
-          >
-            <div
-              className="expanded-view-time-spent-text"
-            >
-              0
-              :
-              00
-              :
-              07
-            </div>
-          </div>
-          <button
-            className="button"
-            itemType="button"
+            className="expanded-view-domain-text"
             onClick={[Function]}
           >
-            <div
-              className="button-text"
-            >
-              Details
-            </div>
-          </button>
+            ackoverflow.com
+          </div>
         </div>
-      </li>
-      <li>
         <div
-          className="expanded-view-tile-container"
+          className="expanded-view-time-spent-text-container"
         >
           <div
-            className="expanded-view-icon-container"
+            className="expanded-view-time-spent-text"
           >
-            <img
-              className="expanded-view-icon"
-              height={20}
-              src="https://icons.duckduckgo.com/ip3/npmjs.com.ico"
-              width={20}
-            />
+            0
+            :
+            11
+            :
+            14
           </div>
+        </div>
+        <button
+          className="button"
+          itemType="button"
+          onClick={[Function]}
+        >
           <div
-            className="expanded-view-domain-container"
+            className="button-text"
           >
-            <div
-              className="expanded-view-domain-text"
-              onClick={[Function]}
-            >
-              npmjs.com
-            </div>
+            Details
           </div>
+        </button>
+      </div>
+    </li>
+    <li>
+      <div
+        className="expanded-view-tile-container"
+      >
+        <div
+          className="expanded-view-icon-container"
+        >
+          <img
+            className="expanded-view-icon"
+            height={20}
+            src="https://icons.duckduckgo.com/ip3/github.com.ico"
+            width={20}
+          />
+        </div>
+        <div
+          className="expanded-view-domain-container"
+        >
           <div
-            className="expanded-view-time-spent-text-container"
-          >
-            <div
-              className="expanded-view-time-spent-text"
-            >
-              0
-              :
-              00
-              :
-              05
-            </div>
-          </div>
-          <button
-            className="button"
-            itemType="button"
+            className="expanded-view-domain-text"
             onClick={[Function]}
           >
-            <div
-              className="button-text"
-            >
-              Details
-            </div>
-          </button>
+            github.com
+          </div>
         </div>
-      </li>
-    </ul>
+        <div
+          className="expanded-view-time-spent-text-container"
+        >
+          <div
+            className="expanded-view-time-spent-text"
+          >
+            0
+            :
+            10
+            :
+            07
+          </div>
+        </div>
+        <button
+          className="button"
+          itemType="button"
+          onClick={[Function]}
+        >
+          <div
+            className="button-text"
+          >
+            Details
+          </div>
+        </button>
+      </div>
+    </li>
+    <li>
+      <div
+        className="expanded-view-tile-container"
+      >
+        <div
+          className="expanded-view-icon-container"
+        >
+          <img
+            className="expanded-view-icon"
+            height={20}
+            src="https://icons.duckduckgo.com/ip3/google.com.ico"
+            width={20}
+          />
+        </div>
+        <div
+          className="expanded-view-domain-container"
+        >
+          <div
+            className="expanded-view-domain-text"
+            onClick={[Function]}
+          >
+            google.com
+          </div>
+        </div>
+        <div
+          className="expanded-view-time-spent-text-container"
+        >
+          <div
+            className="expanded-view-time-spent-text"
+          >
+            0
+            :
+            00
+            :
+            07
+          </div>
+        </div>
+        <button
+          className="button"
+          itemType="button"
+          onClick={[Function]}
+        >
+          <div
+            className="button-text"
+          >
+            Details
+          </div>
+        </button>
+      </div>
+    </li>
+    <li>
+      <div
+        className="expanded-view-tile-container"
+      >
+        <div
+          className="expanded-view-icon-container"
+        >
+          <img
+            className="expanded-view-icon"
+            height={20}
+            src="https://icons.duckduckgo.com/ip3/npmjs.com.ico"
+            width={20}
+          />
+        </div>
+        <div
+          className="expanded-view-domain-container"
+        >
+          <div
+            className="expanded-view-domain-text"
+            onClick={[Function]}
+          >
+            npmjs.com
+          </div>
+        </div>
+        <div
+          className="expanded-view-time-spent-text-container"
+        >
+          <div
+            className="expanded-view-time-spent-text"
+          >
+            0
+            :
+            00
+            :
+            05
+          </div>
+        </div>
+        <button
+          className="button"
+          itemType="button"
+          onClick={[Function]}
+        >
+          <div
+            className="button-text"
+          >
+            Details
+          </div>
+        </button>
+      </div>
+    </li>
   </div>,
 ]
 `;
@@ -415,6 +411,13 @@ Array [
       />
     </div>
     <div
+      className="expanded-view-domain-container"
+    >
+      <div
+        className="shrinked-view-domain-text"
+      />
+    </div>
+    <div
       className="shrinked-view-time-spent-text-container"
     >
       <div
@@ -427,6 +430,17 @@ Array [
         00
       </div>
     </div>
+    <button
+      className="button"
+      itemType="button"
+      onClick={[Function]}
+    >
+      <div
+        className="button-text"
+      >
+        Details
+      </div>
+    </button>
   </div>,
 ]
 `;
