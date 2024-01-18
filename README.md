@@ -9,7 +9,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/BartoszKlonowski/browsing-stats/blob/main/LICENSE">
-        <img src="https://img.shields.io/github/license/BartoszKlonowski/browsing-stats?style=plastic" alt="How Long Ive Been Here is released under the GNU GPL v3 license." />
+        <img src="https://img.shields.io/github/license/BartoszKlonowski/browsing-stats?style=plastic" alt="Browsing Stats is released under the GNU GPL v3 license." />
     </a>
     <a href="https://github.com/BartoszKlonowski/browsing-stats/actions/workflows/BrowsingStats-UT.yml">
         <img src="https://img.shields.io/github/actions/workflow/status/BartoszKlonowski/browsing-stats/BrowsingStats-UT.yml?label=Tests&style=plastic" alt="Unit Tests status" />
@@ -52,7 +52,7 @@ Popup that appears contains two views:
 
 ## Contributing ##
 
-If you would like to contribute to the *How Long I've Been Here* project, you are more than welcome!
+If you would like to contribute to the *Browsing Stats* project, you are more than welcome!
 <br/>Any contribution is to make the project better and to improve the user's experience.
 <br/>So if you'd like to contribute, you can do this in one of the following ways:
 
