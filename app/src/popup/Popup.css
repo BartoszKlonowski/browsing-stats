@@ -1,6 +1,8 @@
 html, body {
   scrollbar-width: none;
   overflow: hidden;
+  height: fit-content;
+  width: fit-content;
 }
 .popup-view {
   border: 2px solid #00e080;
