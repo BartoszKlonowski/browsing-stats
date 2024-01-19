@@ -5,7 +5,7 @@
     </h1>
 </p>
 <p align="center">
-    Keep the track of how much time you spent on a website
+    Keep the track of all stats regarding your time spent on a website
 </p>
 <p align="center">
     <a href="https://github.com/BartoszKlonowski/browsing-stats/blob/main/LICENSE">
@@ -44,8 +44,9 @@ After successful installation you will see the extension icon in the upper-right
 Popup that appears contains two views:
 | | | |
 |:-:|:-|:-:|
-| **Basic** | Initial view that displays the overall time spent on the currently active website. | <img width="400" height="auto" src=".github/resources/HowLongIveBeenHere-Example-Basic.gif" alt="" /> |
-| **Extended** | Available after pressing the "More" button. Contains the list of all visited websites and the overall time spent on each of them.<br/><br/>Click on the selected website's name to open it in new tab. | <img width="400" height="auto" src=".github/resources/HowLongIveBeenHere-Example-Extended.gif" alt="" /> |
+| **Basic** | Initial view that displays the overall time spent on the currently active website. | <img width="500" height="auto" src=".github/resources/BrowsingStats-Example-ShrinkedView.gif" alt="" /> |
+| **Extended** | Available after pressing the "More" button. Contains the list of all visited websites and the overall time spent on each of them.<br/>With possibility to sort them by clicking the button with "Sort:" label.<br/><br/>To open the selected website, click on the it's name. | <img width="500" height="auto" src=".github/resources/BrowsingStats-Example-ExpandedView.gif" alt="" /> |
+| **Detailed** | Available after pressing the "Details" button. Contains more specific information about the statistics of all visits to the selected website.<br/>Click the "Back" button to go back to the list.| <img width="500" height="auto" src=".github/resources/BrowsingStats-Example-DetailsView.gif" alt="" /> |
 
 ---
 
@@ -76,4 +77,4 @@ If you plan to implement changes to this extension:
 
 ## Thank you! ##
 
-If you like this project, or you find it helpful, please share your opinion with the author or just give it a star!
+Please share an opinion on the platform's market on how you find this add-on.
