@@ -1,6 +1,6 @@
 {
   "name": "browsing-stats",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Web browser's add-on to check the browsing stats",
   "main": "manifest.json",
   "scripts": {
