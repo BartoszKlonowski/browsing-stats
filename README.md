@@ -37,9 +37,9 @@ This extension does not sends any data to anywhere, but saves the data locally o
 ## Installation & Usage ##
 
 This extension can be installed by:
-* installing it via the add-ons/extension market of your favorite browser by clicking the button bellow:<br/><a href=""><img src="./.github/resources/get-the-addon.png" alt="" /></a>
+* installing it via the add-ons/extension market of your favorite browser by clicking the button bellow:<br/><a href="https://addons.mozilla.org/pl/firefox/addon/browsing-stats/"><img src="./.github/resources/get-the-addon.png" alt="" /></a>
 <a href=""><img height=60 width=172 src="./.github/resources/get-the-addon-chrome.png" alt="" /></a>
-<a href=""><img src="./.github/resources/get-the-addon-edge.png" alt="" /></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/browsing-stats/ohknpoeadkbmeiapmhbjhefmiohdhgdo"><img src="./.github/resources/get-the-addon-edge.png" alt="" /></a>
 * downloading it directly from the [Releases page](https://github.com/BartoszKlonowski/browsing-stats/releases) and install it manually in your browser
 
 After successful installation you will see the extension icon in the upper-right corner of your browser.
